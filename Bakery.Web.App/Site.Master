@@ -1,0 +1,359 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Bakery.Web.App.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %>-Bakery</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="Content/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.5.3/css/bootstrap.min.css" integrity="sha384-JvExCACAZcHNJEc7156QaHXTnQL3hQBixvj5RV5buE7vgnNEzzskDtx9NQ4p6BJe" crossorigin="anonymous">-->
+    <link href="Content/assets/carousel.css" rel="stylesheet">
+    <link href="Content/assets/album.css" rel="stylesheet">
+    <link href="Content/assets/style.css" rel="stylesheet">
+    <link href="Content/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="Content/assets/carousel.css" rel="stylesheet">
+    <%--<webopt:BundleReference runat="server" Path="~/Content/css" />--%>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="myOverlay" class="overlaySearch">
+        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+        <div class="overlay-content">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="button"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <form runat="server">
+        <header>
+            <nav class="fixed-top main-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-6 top-left">
+                            <div class="contact-info">
+                                <a href="tel:https://bakery.themability.com/index.php?route=information/contact&amp;language=en-gb">
+                                    <i class="fa fa-phone"></i>
+                                    <span class="">+1 (123) 8425733</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-6 top-right">
+                            <div class="pull-left">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <nav class="nav-second navbar navbar-expand-md navbar-dark fixed-top bg-white top-auto">
+                <div class="container nav-width">
+                    <div class="logo">
+                        <a href="Home.aspx">
+                            <img src="Content/assets/img/logo.png" title="Your Store" alt="Your Store" class="img-fluid">
+                        </a>
+                    </div>
+
+                    <button class="navbar-toggler btn-rosy" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse navbarCollapse" id="navbarCollapse">
+                        <ul id="mainNavbar" class="navbar-nav mr-auto">
+                            <li class="nav-item active-nav">
+                                <a class="nav-link" href="Home.aspx"><strong>Home </strong><span class="sr-only">(current)</span></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="About.aspx"><strong>About Us </strong></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="product.aspx"><strong>Product </strong></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="blog.aspx"><strong>Blog </strong></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="Contact.aspx"><strong>Contact Us </strong></a>
+                            </li>
+
+                        </ul>
+                        <div class="form-inline mt-2 mt-md-0 nav-option">
+
+                            <a href="javascript:void(0);" class="openBtn mr-sm-2" onclick="openSearch();">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </a>
+
+                            <div class="nav-item dropdown user-action" id="divSettingUser" runat="server">
+                                <a href="javascript:void(0);" data-toggle="dropdown" class="nav-link dropdown-toggle">
+                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    <b class="caret"></b>
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a href="profile.aspx" class="dropdown-item"><i class="fa fa-user-o"></i>&nbsp;Profile</a>
+                                    <a href="setting.aspx" class="dropdown-item" id="lnkSettings" runat="server"><i class="fa fa-sliders"></i>&nbsp;Settings</a>
+                                    <div class="dropdown-divider"></div>
+                                    <%--<a href="#" class="dropdown-item"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>--%>
+                                    <asp:LinkButton ID="lnkLogout" OnClick="lnkLogout_Click" runat="server" CssClass="dropdown-item">
+                                    <i class="fa fa-sign-out"></i>&nbsp;Logout
+                                    </asp:LinkButton>
+                                </div>
+
+                            </div>
+
+                            <a href="Login.aspx" class="openBtn" id="lnkLogin" runat="server">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>Login
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+        <main role="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <div class="mt-6"></div>
+            <!-- FOOTER -->
+            <footer id="dk-footer" class="dk-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-4">
+                            <div class="dk-footer-box-info">
+                                <!--<a href="Home.aspx" class="footer-logo">
+                            <img src="https://bakery.themability.com/image/catalog/logo.png" alt="footer_logo" class="img-fluid">
+                        </a>-->
+                                <p class="footer-info-text">
+                                    Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
+                                </p>
+                                <div class="footer-social-link">
+                                    <h3>Follow us</h3>
+                                    <ul>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- End Social link -->
+                            </div>
+                            <!-- End Footer info -->
+                            <div class="footer-awarad">
+                                <img src="Content/assets/images/icon/best.png" alt="">
+                                <p>Best Design Company 2019</p>
+                            </div>
+                        </div>
+                        <!-- End Col -->
+                        <div class="col-md-12 col-lg-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="contact-us">
+                                        <div class="contact-icon">
+                                            <i class="fa fa-map-o" aria-hidden="true"></i>
+                                        </div>
+                                        <!-- End contact Icon -->
+                                        <div class="contact-info">
+                                            <h3>Jaipur India</h3>
+                                            <p>5353 Road Avenue</p>
+                                        </div>
+                                        <!-- End Contact Info -->
+                                    </div>
+                                    <!-- End Contact Us -->
+                                </div>
+                                <!-- End Col -->
+                                <div class="col-md-6">
+                                    <div class="contact-us contact-us-last">
+                                        <div class="contact-icon">
+                                            <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                        </div>
+                                        <!-- End contact Icon -->
+                                        <div class="contact-info">
+                                            <h3>95 711 9 5353</h3>
+                                            <p>Give us a call</p>
+                                        </div>
+                                        <!-- End Contact Info -->
+                                    </div>
+                                    <!-- End Contact Us -->
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                            <!-- End Contact Row -->
+                            <div class="row">
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="footer-widget footer-left-widget">
+                                        <div class="section-heading">
+                                            <h3>Useful Links</h3>
+                                            <span class="animate-border border-black"></span>
+                                        </div>
+                                        <ul>
+                                            <li>
+                                                <a href="#">About us</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Services</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Projects</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Our Team</a>
+                                            </li>
+                                        </ul>
+                                        <ul>
+                                            <li>
+                                                <a href="#">Contact us</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Blog</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Testimonials</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Faq</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- End Footer Widget -->
+                                </div>
+                                <!-- End col -->
+                                <div class="col-md-12 col-lg-6">
+                                    <div class="footer-widget">
+                                        <div class="section-heading">
+                                            <h3>Subscribe</h3>
+                                            <span class="animate-border border-black"></span>
+                                        </div>
+                                        <p>
+                                            <!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
+                                            Reference site about Lorem Ipsum, giving information on its origins, as well.
+                                        </p>
+                                        <form action="#">
+                                            <div class="form-row">
+                                                <div class="col dk-footer-form">
+                                                    <input type="email" class="form-control" placeholder="Email Address">
+                                                    <button type="submit">
+                                                        <i class="fa fa-send"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- End form -->
+                                    </div>
+                                    <!-- End footer widget -->
+                                </div>
+                                <!-- End Col -->
+                            </div>
+                            <!-- End Row -->
+                        </div>
+                        <!-- End Col -->
+                    </div>
+                    <!-- End Widget Row -->
+                </div>
+                <!-- End Contact Container -->
+
+
+                <div class="copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <span>Copyright © 2019, All Right Reserved Seobin</span>
+                            </div>
+                            <!-- End Col -->
+                            <div class="col-md-6">
+                                <div class="copyright-menu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Terms</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Privacy Policy</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Contact</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End col -->
+                        </div>
+                        <!-- End Row -->
+                    </div>
+                    <!-- End Copyright Container -->
+                </div>
+                <!-- End Copyright -->
+                <!-- Back to top -->
+                <div id="back-to-top" class="back-to-top">
+
+                    <a href="#" class="btn btn-dark" title="Back to Top" style="display: block;">
+                        <i class="fa fa-angle-up"></i>
+                    </a>
+                </div>
+                <!-- End Back to top -->
+            </footer>
+
+        </main>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="Content/assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
+    <script src="Content/assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Content/site.js"></script>
+
+    <asp:ContentPlaceHolder ID="ContentScript" runat="server">
+    </asp:ContentPlaceHolder>
+
+</body>
+</html>
