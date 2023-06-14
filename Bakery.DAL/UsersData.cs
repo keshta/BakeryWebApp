@@ -269,7 +269,7 @@ namespace Bakery.DAL
             {
                 string sql = $"INSERT INTO Users(Username,Password,FullName,Email,Image,IsAdmin,IsActive,DateCreated) " +
                              $"VALUES('{obj.Username}','{obj.Password}','{obj.FullName}','{obj.Email}','{obj.Image}',0,1,GETDATE()) " +
-                             $"Select Scope_Identity()";
+                             $"Select cast(Scope_Identity() as bigint)";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

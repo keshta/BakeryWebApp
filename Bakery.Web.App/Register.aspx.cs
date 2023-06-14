@@ -45,7 +45,8 @@ namespace Bakery.Web.App
                     Email = txtEmail.Text.Trim(),
                     Mobile = txtMobile.Text.Trim(),
                 };
-                var user = _usersManager.Add(obj);
+                var userId = _usersManager.Add(obj);
+                var user = _usersManager.GetUser(userId);
                 HttpCookie cookie = new HttpCookie("userBakery");
                 cookie.Value = JsonConvert.SerializeObject(user);
                 cookie.Expires = DateTime.Now.AddYears(1);
