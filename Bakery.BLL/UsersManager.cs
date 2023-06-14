@@ -95,7 +95,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Validates and creates a new Users.
         /// </summary>
-        public int Add(Users objUsers)
+        public long Add(Users objUsers)
         {
             try
             {

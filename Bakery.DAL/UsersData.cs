@@ -66,6 +66,11 @@ namespace Bakery.DAL
                 }
                 return null;
             }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
             return obj;
         }
 
@@ -91,7 +96,12 @@ namespace Bakery.DAL
             }
             catch (Exception)
             {
-                throw;
+                //throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return false;
         }
@@ -119,7 +129,12 @@ namespace Bakery.DAL
             }
             catch (Exception ex)
             {
-                throw;
+                //throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return false;
         }
@@ -146,7 +161,12 @@ namespace Bakery.DAL
             }
             catch (Exception ex)
             {
-                throw;
+               // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return false;
         }
@@ -185,7 +205,12 @@ namespace Bakery.DAL
             }
             catch (Exception ex)
             {
-                throw;
+                //throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return obj;
         }
@@ -223,7 +248,12 @@ namespace Bakery.DAL
             }
             catch (Exception)
             {
-                throw;
+                //throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return list;
         }
@@ -231,22 +261,30 @@ namespace Bakery.DAL
         /// <summary>
         /// Inserts a new Users or Update an existing Users in database as per Upsert Flag.
         /// </summary>
-        public int Insert(Users obj)
+        public long Insert(Users obj)
         {
-            int result = 0;
+            long result = 0;
 
             try
             {
                 string sql = $"INSERT INTO Users(Username,Password,FullName,Email,Image,IsAdmin,IsActive,DateCreated) " +
-                             $"VALUES('{obj.Username}','{obj.Password}','{obj.FullName}','{obj.Email}','{obj.Image}',0,1,{DateTime.UtcNow})";
+                             $"VALUES('{obj.Username}','{obj.Password}','{obj.FullName}','{obj.Email}','{obj.Image}',0,1,GETDATE()) " +
+                             $"Select Scope_Identity()";
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
-                    result = cmd.ExecuteNonQuery();
+                    result = (long)cmd.ExecuteScalar();
+                    con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                //throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }
@@ -263,14 +301,22 @@ namespace Bakery.DAL
             {
                 string sql = $"UPDATE FROM Users SET Password='{obj.Password}', FullName='{obj.FullName}', Mobile='{obj.Mobile}' " +
                              $"WHERE ID={obj.ID}";
+
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
             catch (Exception)
             {
                 //throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }
@@ -294,7 +340,12 @@ namespace Bakery.DAL
             }
             catch (Exception)
             {
-                throw;
+               // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }

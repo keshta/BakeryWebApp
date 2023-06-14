@@ -1,6 +1,7 @@
 ﻿using Bakery.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -41,9 +42,14 @@ namespace Bakery.DAL
                 dataReader.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return obj;
         }
@@ -79,9 +85,14 @@ namespace Bakery.DAL
                 dataReader.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return list;
         }
@@ -97,14 +108,21 @@ namespace Bakery.DAL
             {
                 string sql = $"INSERT INTO Blog(TitleAr,TitleEn,DescriptionAr,DescriptionEn,Image) " +
                              $"VALUES('{obj.TitleAr}','{obj.TitleEn}','{obj.DescriptionAr}','{obj.DescriptionEn}','{obj.Image}')";
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }
@@ -122,14 +140,21 @@ namespace Bakery.DAL
                 string sql = $"UPDATE FROM Blog SET TitleAr='{obj.TitleAr}', TitleEn='{obj.TitleEn}', DescriptionAr='{obj.DescriptionEn}', " +
                                          $"DescriptionEn = '{obj.DescriptionEn}',Image = '{obj.Image}' " +
                              $"WHERE ID={obj.ID}";
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }
@@ -151,9 +176,14 @@ namespace Bakery.DAL
                 con.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }

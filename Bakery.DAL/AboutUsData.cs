@@ -1,6 +1,7 @@
 ﻿using Bakery.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -42,9 +43,14 @@ namespace Bakery.DAL
                 dataReader.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return obj;
         }
@@ -60,14 +66,21 @@ namespace Bakery.DAL
             {
                 string sql = $"UPDATE FROM AboutUs SET DescriptionAr='{obj.DescriptionEn}', DescriptionEn = '{obj.DescriptionEn}'";
                              //$"WHERE ID={obj.ID} ";
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }

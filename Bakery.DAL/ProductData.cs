@@ -1,6 +1,7 @@
 ﻿using Bakery.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -41,9 +42,14 @@ namespace Bakery.DAL
                 dataReader.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return obj;
         }
@@ -79,9 +85,14 @@ namespace Bakery.DAL
                 dataReader.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return list;
         }
@@ -99,14 +110,22 @@ namespace Bakery.DAL
                                                  $"SummaryEn,InformationAr,InformationEn,DescriptionAr,DescriptionEn,Image) " +
                              $"VALUES('{obj.NameAr}','{obj.NameEn}','{obj.BrandId}','{obj.CategoryId}','{obj.Price}','{obj.Discount}','{obj.SummaryAr}'," +
                                     $"'{obj.SummaryEn}','{obj.InformationAr}','{obj.InformationEn}','{obj.DescriptionAr}','{obj.DescriptionEn}','{obj.Image}')";
+
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }
@@ -127,14 +146,22 @@ namespace Bakery.DAL
                                          $"InformationEn = '{obj.InformationEn}',DescriptionAr = '{obj.DescriptionAr}'," +
                                          $"DescriptionEn = '{obj.DescriptionEn}',Image = '{obj.Image}' " +
                              $"WHERE ID={obj.ID}";
+
+                con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }
@@ -156,9 +183,14 @@ namespace Bakery.DAL
                 con.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
             }
             return result;
         }
