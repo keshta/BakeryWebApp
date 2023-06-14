@@ -75,15 +75,16 @@ namespace Bakery.DAL
             {
                 string sql = "SELECT COUNT(*) FROM Users ";
                 if (id > 0)
-                    sql += $" WHERE (lower(Email) = lower({email}) and ID = {id}) or (lower(Email) = lower({email}) and ID <> {id})";
+                    sql += $" WHERE (lower(Email) = lower('{email}') and ID = {id}) or (lower(Email) = lower('{email}') and ID <> {id})";
                     
                 else
-                    sql += $"WHERE lower(Email)={email}";
+                    sql += $"WHERE lower(Email)='{email}'";
 
+                con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
                     int count = (Int32)command.ExecuteScalar();
-
+                    con.Close();
                     if (count > 0)
                         return true;
                 }
@@ -106,15 +107,17 @@ namespace Bakery.DAL
                 else
                     sql += $"WHERE lower(Username) = '{username}'";
 
+                con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
                     int count = (Int32)command.ExecuteScalar();
-
+                    con.Close();
                     if (count > 0)
                         return true;
                 }
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -132,15 +135,16 @@ namespace Bakery.DAL
                 else
                     sql += $"WHERE lower(Mobile) = '{mobile}'";
 
+                con.Open();
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
                     int count = (Int32)command.ExecuteScalar();
-
+                    con.Close();
                     if (count > 0)
                         return true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }
@@ -179,7 +183,7 @@ namespace Bakery.DAL
                 dataReader.Close();
                 sqlCommand.Dispose();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

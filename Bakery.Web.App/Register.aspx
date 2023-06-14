@@ -25,10 +25,10 @@
                 <div class="text-center mb-2">
                     <p class="color-rosy"> <i class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 80px;"></i> </p>
                     <h1 class="h3 mb-3 font-weight-normal">User Register</h1>
+                    <asp:Label ID="lblError" runat="server" CssClass="text-danger" Text=""></asp:Label>
                 </div>
 
                 <div class="form-label-group mt-2">
-                    <asp:Label ID="lblError" runat="server" CssClass="text-danger" Text=""></asp:Label>
                     <label for="txtFullName"> Username </label>
                     <asp:RequiredFieldValidator ID="RequiredUsername" runat="server" ControlToValidate="txtUsername" CssClass="text-danger" ErrorMessage="Username Is Required"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" ToolTip="Username"></asp:TextBox>
