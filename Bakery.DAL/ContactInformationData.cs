@@ -57,7 +57,7 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM ContactInformation SET Address={obj.Address}, Phone = {obj.Phone}, Email = {obj.Email}, ContactNumber = {obj.ContactNumber}, LocationMap = {obj.LocationMap}";
+                string sql = $"UPDATE FROM ContactInformation SET Address='{obj.Address}', Phone = '{obj.Phone}', Email = '{obj.Email}', ContactNumber = '{obj.ContactNumber}', LocationMap = '{obj.LocationMap}'";
                              //$"WHERE ID={obj.ID} ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

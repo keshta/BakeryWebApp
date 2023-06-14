@@ -95,7 +95,7 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"INSERT INTO Brand(NameAr,NameEn,Image) VALUES({obj.NameAr},{obj.NameEn},{obj.Image})";
+                string sql = $"INSERT INTO Brand(NameAr,NameEn,Image) VALUES('{obj.NameAr}','{obj.NameEn}','{obj.Image}')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
@@ -118,7 +118,7 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Brand SET NameAr={obj.NameAr}, NameEn={obj.NameEn}, Image = {obj.Image} " +
+                string sql = $"UPDATE FROM Brand SET NameAr='{obj.NameAr}', NameEn='{obj.NameEn}', Image = '{obj.Image}' " +
                              $"WHERE ID={obj.ID}";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

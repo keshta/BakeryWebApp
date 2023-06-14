@@ -28,26 +28,39 @@
                 </div>
 
                 <div class="form-label-group mt-2">
-                    <label for="fullName"> Full Name</label>
-                    <input type="text" id="fullName" class="form-control" placeholder="Full Name" required="" autofocus="">
+                    <asp:Label ID="lblError" runat="server" CssClass="text-danger" Text=""></asp:Label>
+                    <label for="txtFullName"> Username </label>
+                    <asp:RequiredFieldValidator ID="RequiredUsername" runat="server" ControlToValidate="txtUsername" CssClass="text-danger" ErrorMessage="Username Is Required"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" ToolTip="Username"></asp:TextBox>
                 </div>
 
                 <div class="form-label-group mt-2">
-                    <label for="inputEmail">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                    <label for="txtFullName"> Full Name</label>
+                    <asp:RequiredFieldValidator ID="RequiredFullName" runat="server" ControlToValidate="txtFullName" CssClass="text-danger" ErrorMessage="Full Name Is Required"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtFullName" runat="server" CssClass="form-control" ToolTip="Full Name"></asp:TextBox>
                 </div>
 
                 <div class="form-label-group mt-2">
-                    <label for="mobileNumber"> Mobile</label>
-                    <input type="text" id="mobileNumber" class="form-control" placeholder="Mobile" required="" autofocus="">
+                    <label for="txtEmail">Email address</label>
+                    <asp:RequiredFieldValidator ID="RequiredEmail" runat="server" ControlToValidate="txtEmail" CssClass="text-danger" ErrorMessage="Email Is Required"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularEmail" runat="server" ControlToValidate="txtEmail" CssClass="text-danger" ErrorMessage="Email Is Invalid" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ToolTip="Email Address"></asp:TextBox>
                 </div>
 
                 <div class="form-label-group mt-2">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <label for="txtMobile"> Mobile</label>
+                    <asp:RequiredFieldValidator ID="RequiredMobile" runat="server" ControlToValidate="txtMobile" CssClass="text-danger" ErrorMessage="Mobile Is Required"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtMobile" runat="server" CssClass="form-control" ToolTip="Mobile"></asp:TextBox>
+                </div>
+
+                <div class="form-label-group mt-2">
+                    <label for="txtPassword">Password</label>
+                    <asp:RequiredFieldValidator ID="RequiredPassword" runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ErrorMessage="Password Is Required"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" ToolTip="Password"></asp:TextBox>
                 </div>
                 <br />
-                <button class="btn btn-lg btn-rosy btn-block" type="submit">Sign in</button>
+                <asp:Button ID="btnSignIn" runat="server" OnClick="btnSignIn_Click" CssClass="btn btn-lg btn-rosy btn-block" Text="Sign in" />
+
                 <a href="login.aspx" class="btn btn-link">I already have a membership</a>
             </div>
 

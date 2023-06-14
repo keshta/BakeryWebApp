@@ -101,10 +101,10 @@ namespace Bakery.DAL
             {
                 string sql = "SELECT COUNT(*) FROM Users ";
                 if (id > 0)
-                    sql += $" WHERE (Username = {username} and ID={id}) or (Username={username} and ID <> {id})";
+                    sql += $" WHERE (Username = '{username}' and ID={id}) or (Username='{username}' and ID <> {id})";
 
                 else
-                    sql += $"WHERE lower(Username) = {username}";
+                    sql += $"WHERE lower(Username) = '{username}'";
 
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
@@ -127,10 +127,10 @@ namespace Bakery.DAL
             {
                 string sql = "SELECT COUNT(*) FROM Users ";
                 if (id > 0)
-                    sql += $" WHERE (Mobile = {mobile} and ID={id}) or (Mobile={mobile} and ID <> {id})";
+                    sql += $" WHERE (Mobile = '{mobile}' and ID={id}) or (Mobile='{mobile}' and ID <> {id})";
 
                 else
-                    sql += $"WHERE lower(Mobile) = {mobile}";
+                    sql += $"WHERE lower(Mobile) = '{mobile}'";
 
                 using (SqlCommand command = new SqlCommand(sql, con))
                 {
@@ -234,7 +234,7 @@ namespace Bakery.DAL
             try
             {
                 string sql = $"INSERT INTO Users(Username,Password,FullName,Email,Image,IsAdmin,IsActive,DateCreated) " +
-                             $"VALUES({obj.Username},{obj.Password},{obj.FullName},{obj.Email},{obj.Image},0,1,{DateTime.UtcNow})";
+                             $"VALUES('{obj.Username}','{obj.Password}','{obj.FullName}','{obj.Email}','{obj.Image}',0,1,{DateTime.UtcNow})";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
@@ -257,7 +257,7 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Users SET Password={obj.Password}, FullName={obj.FullName}, Mobile={obj.Mobile} " +
+                string sql = $"UPDATE FROM Users SET Password='{obj.Password}', FullName='{obj.FullName}', Mobile='{obj.Mobile}' " +
                              $"WHERE ID={obj.ID}";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

@@ -26,7 +26,7 @@ namespace Bakery.BLL
             }
         }
 
-        public bool EmailIsExist(string email, long id)
+        public bool EmailIsExist(string email, long id = 0)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace Bakery.BLL
             }
         }
 
-        public bool UsernameIsExist(string username, long id)
+        public bool UsernameIsExist(string username, long id=0)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Bakery.BLL
             }
         }
 
-        public bool MobileIsExist(string mobile, long id)
+        public bool MobileIsExist(string mobile, long id = 0)
         {
             try
             {

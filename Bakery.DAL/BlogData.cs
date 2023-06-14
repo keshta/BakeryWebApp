@@ -96,7 +96,7 @@ namespace Bakery.DAL
             try
             {
                 string sql = $"INSERT INTO Blog(TitleAr,TitleEn,DescriptionAr,DescriptionEn,Image) " +
-                             $"VALUES({obj.TitleAr},{obj.TitleEn},{obj.DescriptionAr},{obj.DescriptionEn},{obj.Image})";
+                             $"VALUES('{obj.TitleAr}','{obj.TitleEn}','{obj.DescriptionAr}','{obj.DescriptionEn}','{obj.Image}')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
@@ -119,8 +119,8 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Blog SET TitleAr={obj.TitleAr}, TitleEn={obj.TitleEn}, DescriptionAr={obj.DescriptionEn}, " +
-                                         $"DescriptionEn = {obj.DescriptionEn},Image = {obj.Image} " +
+                string sql = $"UPDATE FROM Blog SET TitleAr='{obj.TitleAr}', TitleEn='{obj.TitleEn}', DescriptionAr='{obj.DescriptionEn}', " +
+                                         $"DescriptionEn = '{obj.DescriptionEn}',Image = '{obj.Image}' " +
                              $"WHERE ID={obj.ID}";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

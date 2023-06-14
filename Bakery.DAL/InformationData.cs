@@ -57,12 +57,12 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Information SET OurExperience={obj.OurExperience}, CakeSpecialist = {obj.CakeSpecialist}, " +
-                                           $"CompleteProject = {obj.CompleteProject}, HappyClients = {obj.HappyClients}, " +
-                                           $"TitleAr = {obj.TitleAr}, TitleEn = {obj.TitleEn}, SummaryAr={obj.SummaryAr}, " +
-                                           $"SummaryEn = {obj.SummaryEn}, HealthyDescriptionAr={obj.HealthyDescriptionAr}, " +
-                                           $"HealthyDescriptionEn={obj.HealthyDescriptionEn}, AwardWinningDescriptionAr={obj.AwardWinningDescriptionAr}," +
-                                           $"AwardWinningDescriptionEn={obj.AwardWinningDescriptionEn} ";
+                string sql = $"UPDATE FROM Information SET OurExperience='{obj.OurExperience}', CakeSpecialist = '{obj.CakeSpecialist}', " +
+                                           $"CompleteProject = '{obj.CompleteProject}', HappyClients = '{obj.HappyClients}', " +
+                                           $"TitleAr = '{obj.TitleAr}', TitleEn = '{obj.TitleEn}', SummaryAr='{obj.SummaryAr}', " +
+                                           $"SummaryEn = '{obj.SummaryEn}', HealthyDescriptionAr='{obj.HealthyDescriptionAr}', " +
+                                           $"HealthyDescriptionEn='{obj.HealthyDescriptionEn}', AwardWinningDescriptionAr='{obj.AwardWinningDescriptionAr}'," +
+                                           $"AwardWinningDescriptionEn='{obj.AwardWinningDescriptionEn}' ";
                              //$"WHERE ID={obj.ID} ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

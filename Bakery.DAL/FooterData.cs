@@ -57,8 +57,8 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Footer SET SubscribeAr={obj.SubscribeAr}, SubscribeEn = {obj.SubscribeEn}, " +
-                                                    $"SummaryAr = {obj.SummaryAr}, SummaryEn = {obj.SummaryEn} ";
+                string sql = $"UPDATE FROM Footer SET SubscribeAr='{obj.SubscribeAr}', SubscribeEn = '{obj.SubscribeEn}', " +
+                                                    $"SummaryAr = '{obj.SummaryAr}', SummaryEn = '{obj.SummaryEn}' ";
                              //$"WHERE ID={obj.ID} ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

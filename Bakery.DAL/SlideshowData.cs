@@ -94,7 +94,7 @@ namespace Bakery.DAL
             int result = 0;
             try
             {
-                string sql = $"INSERT INTO Slideshow(Image) VALUES({obj.Image})";
+                string sql = $"INSERT INTO Slideshow(Image) VALUES('{obj.Image}')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
@@ -117,7 +117,7 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Slideshow SET Image = {obj.Image} WHERE ID={obj.ID}";
+                string sql = $"UPDATE FROM Slideshow SET Image = '{obj.Image}' WHERE ID={obj.ID}";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();

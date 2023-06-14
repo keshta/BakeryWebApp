@@ -58,7 +58,7 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM AboutUs SET DescriptionAr={obj.DescriptionEn}, DescriptionEn = {obj.DescriptionEn}";
+                string sql = $"UPDATE FROM AboutUs SET DescriptionAr='{obj.DescriptionEn}', DescriptionEn = '{obj.DescriptionEn}'";
                              //$"WHERE ID={obj.ID} ";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {

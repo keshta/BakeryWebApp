@@ -97,8 +97,8 @@ namespace Bakery.DAL
             {
                 string sql = $"INSERT INTO Product(NameAr,NameEn,BrandId,CategoryId,Price,Discount,SummaryAr," +
                                                  $"SummaryEn,InformationAr,InformationEn,DescriptionAr,DescriptionEn,Image) " +
-                             $"VALUES({obj.NameAr},{obj.NameEn},{obj.BrandId},{obj.CategoryId},{obj.Price},{obj.Discount},{obj.SummaryAr}," +
-                                    $"{obj.SummaryEn},{obj.InformationAr},{obj.InformationEn},{obj.DescriptionAr},{obj.DescriptionEn},{obj.Image})";
+                             $"VALUES('{obj.NameAr}','{obj.NameEn}','{obj.BrandId}','{obj.CategoryId}','{obj.Price}','{obj.Discount}','{obj.SummaryAr}'," +
+                                    $"'{obj.SummaryEn}','{obj.InformationAr}','{obj.InformationEn}','{obj.DescriptionAr}','{obj.DescriptionEn}','{obj.Image}')";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
                     result = cmd.ExecuteNonQuery();
@@ -121,11 +121,11 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Product SET NameAr={obj.NameAr}, NameEn={obj.NameEn}, BrandId={obj.BrandId}, " +
-                                         $"CategoryId = {obj.CategoryId},Price = {obj.Price},Discount = {obj.Discount}," +
-                                         $"SummaryAr = {obj.SummaryAr},SummaryEn = {obj.SummaryEn},InformationAr = {obj.InformationAr}," +
-                                         $"InformationEn = {obj.InformationEn},DescriptionAr = {obj.DescriptionAr}," +
-                                         $"DescriptionEn = {obj.DescriptionEn},Image = {obj.Image} " +
+                string sql = $"UPDATE FROM Product SET NameAr='{obj.NameAr}', NameEn='{obj.NameEn}', BrandId='{obj.BrandId}', " +
+                                         $"CategoryId = '{obj.CategoryId}',Price = '{obj.Price}',Discount = '{obj.Discount}'," +
+                                         $"SummaryAr = '{obj.SummaryAr}',SummaryEn = '{obj.SummaryEn}',InformationAr = '{obj.InformationAr}'," +
+                                         $"InformationEn = '{obj.InformationEn}',DescriptionAr = '{obj.DescriptionAr}'," +
+                                         $"DescriptionEn = '{obj.DescriptionEn}',Image = '{obj.Image}' " +
                              $"WHERE ID={obj.ID}";
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
