@@ -1,4 +1,5 @@
 ﻿using Bakery.BLL;
+using Bakery.Web.App.Model;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,10 +29,7 @@ namespace Bakery.Web.App
                 var user = _usersManager.LoginUser(username, password);
                 if(user != null)
                 {
-                    HttpCookie cookie = new HttpCookie("userBakery");
-                    cookie.Value = JsonConvert.SerializeObject(user); 
-                    cookie.Expires = chkRemember.Checked? DateTime.Now.AddYears(1) : DateTime.Now.AddDays(3);
-                    Response.SetCookie(cookie);
+                    AppCookies.AddCookie(user,chkRemember.Checked);
                     Response.Redirect("Home.aspx");
                 }
             }
@@ -40,3 +38,4 @@ namespace Bakery.Web.App
 
     }
 }
+

@@ -63,17 +63,30 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Information SET OurExperience='{obj.OurExperience}', CakeSpecialist = '{obj.CakeSpecialist}', " +
-                                           $"CompleteProject = '{obj.CompleteProject}', HappyClients = '{obj.HappyClients}', " +
-                                           $"TitleAr = '{obj.TitleAr}', TitleEn = '{obj.TitleEn}', SummaryAr='{obj.SummaryAr}', " +
-                                           $"SummaryEn = '{obj.SummaryEn}', HealthyDescriptionAr='{obj.HealthyDescriptionAr}', " +
-                                           $"HealthyDescriptionEn='{obj.HealthyDescriptionEn}', AwardWinningDescriptionAr='{obj.AwardWinningDescriptionAr}'," +
-                                           $"AwardWinningDescriptionEn='{obj.AwardWinningDescriptionEn}' ";
+                string sql = $"UPDATE Information SET OurExperience=@OurExperience, CakeSpecialist=@CakeSpecialist, " +
+                                           $"CompleteProject=@CompleteProject, HappyClients=@HappyClients, " +
+                                           $"TitleAr=@TitleAr, TitleEn=@TitleEn, SummaryAr=@SummaryAr, " +
+                                           $"SummaryEn=@SummaryEn, HealthyDescriptionAr=@HealthyDescriptionAr, " +
+                                           $"HealthyDescriptionEn=@HealthyDescriptionEn, AwardWinningDescriptionAr=@AwardWinningDescriptionAr," +
+                                           $"AwardWinningDescriptionEn=@AwardWinningDescriptionEn ";
                              //$"WHERE ID={obj.ID} ";
                 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@OurExperience", obj.OurExperience));
+                    cmd.Parameters.Add(new SqlParameter("@CakeSpecialist", obj.CakeSpecialist));
+                    cmd.Parameters.Add(new SqlParameter("@CompleteProject", obj.CompleteProject));
+                    cmd.Parameters.Add(new SqlParameter("@HappyClients", obj.HappyClients));
+                    cmd.Parameters.Add(new SqlParameter("@TitleAr", obj.TitleAr));
+                    cmd.Parameters.Add(new SqlParameter("@TitleEn", obj.TitleEn));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryAr", obj.SummaryAr));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryEn", obj.SummaryEn));
+                    cmd.Parameters.Add(new SqlParameter("@HealthyDescriptionAr", obj.HealthyDescriptionAr));
+                    cmd.Parameters.Add(new SqlParameter("@HealthyDescriptionEn", obj.HealthyDescriptionEn));
+                    cmd.Parameters.Add(new SqlParameter("@AwardWinningDescriptionAr", obj.AwardWinningDescriptionAr));
+                    cmd.Parameters.Add(new SqlParameter("@AwardWinningDescriptionEn", obj.AwardWinningDescriptionEn));
+
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

@@ -105,11 +105,13 @@ namespace Bakery.DAL
             int result = 0;
             try
             {
-                string sql = $"INSERT INTO Slideshow(Image) VALUES('{obj.Image}')";
+                string sql = $"INSERT INTO Slideshow(Image) VALUES(@Image) " +
+                             $" Select cast(Scope_Identity() as int) ";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
-                    result = cmd.ExecuteNonQuery();
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
+                    result = (int)cmd.ExecuteScalar();
                     con.Close();
                 }
             }
@@ -135,10 +137,11 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Slideshow SET Image = '{obj.Image}' WHERE ID={obj.ID}";
+                string sql = $"UPDATE Slideshow SET Image = @Image WHERE ID={obj.ID}";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

@@ -33,26 +33,24 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"> Edit About Us</h4>
+                                <hr />
                                 <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
                             </div>
                             <div class="panel-body mh-panel pt-5">
                                 <div class="row">
                                     <div class="form-group col-12">
                                         <label>Description</label>
-                                        <textarea class="form-control"></textarea>
-                                    </div>
-
-                                    <div class="form-group col-12">
-                                        <label>Description</label>
-                                        <textarea class="form-control"></textarea>
+                                        <asp:RequiredFieldValidator ID="RequiredSummary" runat="server" ControlToValidate="txtDescription" CssClass="text-danger" 
+                                                                    ErrorMessage="Description Is Required" ValidationGroup="descriptionGroup">
+                                        </asp:RequiredFieldValidator>
+                                        <textarea class="form-control" id="txtDescription" runat="server"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-primary btn-fill mrg-r-10">
-                                    <i class="fa fa-floppy-o"></i>
-                                    Save
-                                </button>
+                                <asp:LinkButton ID="lnkSave" runat="server" OnClick="lnkSave_Click" ValidationGroup="descriptionGroup" CssClass="btn btn-primary btn-fill mrg-r-10">
+                                    <i class="fa fa-floppy-o"></i> Save
+                                </asp:LinkButton>
                             </div>
                         </div>
                     </div>

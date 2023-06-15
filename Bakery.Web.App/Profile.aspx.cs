@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bakery.BLL;
+using Bakery.Web.App.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,9 @@ namespace Bakery.Web.App
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblFullName.InnerText = AppCookies.User.FullName ?? "";
+            lblEmail.InnerText = AppCookies.User.Email ?? "";
+            lblMobile.InnerText = AppCookies.User.Mobile??"";
         }
     }
 }

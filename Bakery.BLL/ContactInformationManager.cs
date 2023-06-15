@@ -13,7 +13,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific ContactInformation for the given Id.
         /// </summary>
-        public ContactInformation GetContactInformation(int id)
+        public ContactInformation GetContactInformation(int id=1)
         {
             try
             {

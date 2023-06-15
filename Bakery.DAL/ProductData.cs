@@ -108,12 +108,25 @@ namespace Bakery.DAL
             {
                 string sql = $"INSERT INTO Product(NameAr,NameEn,BrandId,CategoryId,Price,Discount,SummaryAr," +
                                                  $"SummaryEn,InformationAr,InformationEn,DescriptionAr,DescriptionEn,Image) " +
-                             $"VALUES('{obj.NameAr}','{obj.NameEn}','{obj.BrandId}','{obj.CategoryId}','{obj.Price}','{obj.Discount}','{obj.SummaryAr}'," +
-                                    $"'{obj.SummaryEn}','{obj.InformationAr}','{obj.InformationEn}','{obj.DescriptionAr}','{obj.DescriptionEn}','{obj.Image}')";
+                             $"VALUES(@NameAr,@NameEn,@BrandId,@CategoryId,@Price,@Discount,@SummaryAr, " +
+                                    $"@SummaryEn,@InformationAr,@InformationEn,@DescriptionAr,@DescriptionEn,@Image)";
 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@NameAr", obj.NameAr));
+                    cmd.Parameters.Add(new SqlParameter("@NameEn", obj.NameEn));
+                    cmd.Parameters.Add(new SqlParameter("@BrandId", obj.BrandId));
+                    cmd.Parameters.Add(new SqlParameter("@CategoryId", obj.CategoryId));
+                    cmd.Parameters.Add(new SqlParameter("@Price", obj.Price));
+                    cmd.Parameters.Add(new SqlParameter("@Discount", obj.Discount));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryAr", obj.SummaryAr));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryEn", obj.SummaryEn));
+                    cmd.Parameters.Add(new SqlParameter("@InformationAr", obj.InformationAr));
+                    cmd.Parameters.Add(new SqlParameter("@InformationEn", obj.InformationEn));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionAr", obj.DescriptionAr));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionEn", obj.DescriptionEn));
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -140,16 +153,29 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Product SET NameAr='{obj.NameAr}', NameEn='{obj.NameEn}', BrandId='{obj.BrandId}', " +
-                                         $"CategoryId = '{obj.CategoryId}',Price = '{obj.Price}',Discount = '{obj.Discount}'," +
-                                         $"SummaryAr = '{obj.SummaryAr}',SummaryEn = '{obj.SummaryEn}',InformationAr = '{obj.InformationAr}'," +
-                                         $"InformationEn = '{obj.InformationEn}',DescriptionAr = '{obj.DescriptionAr}'," +
-                                         $"DescriptionEn = '{obj.DescriptionEn}',Image = '{obj.Image}' " +
+                string sql = $"UPDATE Product SET NameAr=@NameAr, NameEn=@NameEn, BrandId=@BrandId, " +
+                                               $" CategoryId=@CategoryId, Price=@Price, Discount=@Discount, " +
+                                               $" SummaryAr=@SummaryAr, SummaryEn=@SummaryEn, InformationAr=@InformationAr, " +
+                                               $" InformationEn=@InformationEn, DescriptionAr=@DescriptionAr, " +
+                                               $" DescriptionEn=@DescriptionEn, Image=@Image " +
                              $"WHERE ID={obj.ID}";
 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@NameAr", obj.NameAr));
+                    cmd.Parameters.Add(new SqlParameter("@NameEn", obj.NameEn));
+                    cmd.Parameters.Add(new SqlParameter("@BrandId", obj.BrandId));
+                    cmd.Parameters.Add(new SqlParameter("@CategoryId", obj.CategoryId));
+                    cmd.Parameters.Add(new SqlParameter("@Price", obj.Price));
+                    cmd.Parameters.Add(new SqlParameter("@Discount", obj.Discount));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryAr", obj.SummaryAr));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryEn", obj.SummaryEn));
+                    cmd.Parameters.Add(new SqlParameter("@InformationAr", obj.InformationAr));
+                    cmd.Parameters.Add(new SqlParameter("@InformationEn", obj.InformationEn));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionAr", obj.DescriptionAr));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionEn", obj.DescriptionEn));
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

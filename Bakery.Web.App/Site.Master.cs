@@ -34,13 +34,9 @@ namespace Bakery.Web.App
         {
             if (AppCookies.IsLogin)
             {
-                HttpCookie currentUserCookie = HttpContext.Current.Request.Cookies["userBakery"];
-                HttpContext.Current.Response.Cookies.Remove("userBakery");
-                currentUserCookie.Expires = DateTime.Now.AddDays(-10);
-                currentUserCookie.Value = null;
-                HttpContext.Current.Response.SetCookie(currentUserCookie);
-                //Response.Redirect("Home.aspx");
-                Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                AppCookies.RemoveCookie();
+                //Page.Response.Redirect(Page.Request.Url.ToString(), true);
+                Response.Redirect("Home.aspx");
             }
         }
     }

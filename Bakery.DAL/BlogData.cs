@@ -106,11 +106,16 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"INSERT INTO Blog(TitleAr,TitleEn,DescriptionAr,DescriptionEn,Image) " +
-                             $"VALUES('{obj.TitleAr}','{obj.TitleEn}','{obj.DescriptionAr}','{obj.DescriptionEn}','{obj.Image}')";
+                string sql = $"INSERT INTO Blog(TitleAr,TitleEn,DescriptionAr,DescriptionEn,Image,DateCreated) " +
+                             $"VALUES(@TitleAr,@TitleEn,@DescriptionAr,@DescriptionEn,@Image,GETDATE())";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@TitleAr", obj.TitleAr));
+                    cmd.Parameters.Add(new SqlParameter("@TitleEn", obj.TitleEn));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionAr", obj.DescriptionAr));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionEn", obj.DescriptionEn));
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -137,12 +142,17 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Blog SET TitleAr='{obj.TitleAr}', TitleEn='{obj.TitleEn}', DescriptionAr='{obj.DescriptionEn}', " +
-                                         $"DescriptionEn = '{obj.DescriptionEn}',Image = '{obj.Image}' " +
+                string sql = $"UPDATE Blog SET TitleAr=@TitleAr, TitleEn=@TitleEn, DescriptionAr=@DescriptionAr, " +
+                                         $"DescriptionEn = @Description,Image = @Image " +
                              $"WHERE ID={obj.ID}";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@TitleAr", obj.TitleAr));
+                    cmd.Parameters.Add(new SqlParameter("@TitleEn", obj.TitleEn));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionAr", obj.DescriptionAr));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionEn", obj.DescriptionEn));
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

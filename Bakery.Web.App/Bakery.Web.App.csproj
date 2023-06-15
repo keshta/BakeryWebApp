@@ -184,6 +184,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\site.js" />
     <Content Include="EditAboutUs.aspx" />
+    <Content Include="EditBlog.aspx" />
     <Content Include="EditContactUs.aspx" />
     <Content Include="EditFooter.aspx" />
     <Content Include="EditInformation.aspx" />
@@ -364,6 +365,13 @@
     <Compile Include="EditAboutUs.aspx.designer.cs">
       <DependentUpon>EditAboutUs.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditBlog.aspx.cs">
+      <DependentUpon>EditBlog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditBlog.aspx.designer.cs">
+      <DependentUpon>EditBlog.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditContactUs.aspx.cs">
       <DependentUpon>EditContactUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -410,6 +418,7 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\AppCookies.cs" />
+    <Compile Include="Helper\DirectlyFilePath.cs" />
     <Compile Include="Product.aspx.cs">
       <DependentUpon>Product.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -484,7 +493,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

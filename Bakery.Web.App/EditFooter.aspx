@@ -33,37 +33,33 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"> Edit Footer</h4>
+                                <hr />
                                 <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
                             </div>
                             <div class="panel-body mh-panel pt-3">
                                 <div class="row">
-                                    <div class="form-group col-lg-6 col-md-6">
+                                    <div class="form-group col-lg-12 col-md-12">
                                         <label>Subscribe</label>
-                                        <textarea class="form-control" placeholder="Subscribe"></textarea>
+                                        <asp:RequiredFieldValidator ID="RequiredSubscribe" runat="server" ControlToValidate="txtSubscribe" CssClass="text-danger"
+                                                                    ErrorMessage="Subscribe Is Required" ValidationGroup="footerGroup">
+                                        </asp:RequiredFieldValidator>
+                                        <textarea class="form-control" id="txtSubscribe" runat="server" placeholder="Subscribe"></textarea>
                                     </div>
 
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>Subscribe</label>
-                                        <textarea class="form-control" placeholder="Subscribe"></textarea>
-                                    </div>
-
-                                    <div class="form-group col-lg-6 col-md-6">
+                                    <div class="form-group col-lg-12 col-md-12">
                                         <label>Summary</label>
-                                        <textarea class="form-control" placeholder="Summary"></textarea>
-                                    </div>
-
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>Summary</label>
-                                        <textarea class="form-control" placeholder="Summary"></textarea>
+                                        <asp:RequiredFieldValidator ID="RequiredSummary" runat="server" ControlToValidate="txtSummary" CssClass="text-danger" 
+                                                                    ErrorMessage="Summary Is Required" ValidationGroup="footerGroup">
+                                        </asp:RequiredFieldValidator>
+                                        <textarea class="form-control" id="txtSummary" runat="server" placeholder="Summary"></textarea>
                                     </div>
 
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-primary btn-fill mrg-r-10">
-                                    <i class="fa fa-floppy-o"></i>
-                                    Save
-                                </button>
+                                <asp:LinkButton ID="lnkSave" runat="server" OnClick="lnkSave_Click" CssClass="btn btn-primary btn-fill mrg-r-10" ValidationGroup="footerGroup">
+                                    <i class="fa fa-floppy-o"></i> Save
+                                </asp:LinkButton>
                             </div>
                         </div>
                     </div>

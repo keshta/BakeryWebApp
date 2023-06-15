@@ -28,13 +28,13 @@
 
                 <div class="form-label-group">
                     <label for="txtUsername">Username</label>
-                    <asp:RequiredFieldValidator ID="RequiredUsername" runat="server" ControlToValidate="txtUsername" CssClass="text-danger" ErrorMessage="Username Is Required"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredUsername" runat="server" ControlToValidate="txtUsername" CssClass="text-danger" ErrorMessage="Username Is Required" ValidationGroup="loginGroup"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" ToolTip="Username, Email or Mobile"></asp:TextBox>
                 </div>
 
                 <div class="form-label-group mt-3">
                     <label for="txtPassword">Password</label>
-                    <asp:RequiredFieldValidator ID="RequiredPassword" runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ErrorMessage="Password Is Required"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredPassword" runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ErrorMessage="Password Is Required" ValidationGroup="loginGroup"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" ToolTip="Password"></asp:TextBox>
                 </div>
 
@@ -44,7 +44,7 @@
                         <asp:CheckBox ID="chkRemember" runat="server" CssClass="chk-1" ToolTip="remember-me"/> Remember Me
                     </label>
                 </div>
-                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Sign in" class="btn btn-lg btn-rosy btn-block"/>
+                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Sign in" ValidationGroup="loginGroup" CssClass="btn btn-lg btn-rosy btn-block"/>
             </div>
 
         </div>

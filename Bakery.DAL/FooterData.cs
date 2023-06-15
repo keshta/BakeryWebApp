@@ -63,12 +63,16 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Footer SET SubscribeAr='{obj.SubscribeAr}', SubscribeEn = '{obj.SubscribeEn}', " +
-                                                    $"SummaryAr = '{obj.SummaryAr}', SummaryEn = '{obj.SummaryEn}' ";
+                string sql = $"UPDATE Footer SET SubscribeAr=@SubscribeAr, SubscribeEn=@SubscribeEn, " +
+                                               $"SummaryAr=@SummaryAr, SummaryEn=@SummaryEn ";
                              //$"WHERE ID={obj.ID} ";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@SubscribeAr", obj.SubscribeAr));
+                    cmd.Parameters.Add(new SqlParameter("@SubscribeEn", obj.SubscribeEn));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryAr", obj.SummaryAr));
+                    cmd.Parameters.Add(new SqlParameter("@SummaryEn", obj.SummaryEn));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

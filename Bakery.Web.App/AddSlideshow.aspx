@@ -44,8 +44,11 @@
                             <div class="panel-body mh-panel pt-5">
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
-                                        <label for="formFileLg" class="form-label"> Image</label>
-                                        <input class="form-control form-control-md" onchange="readURL(this);" id="formFileLg" type="file">
+                                        <label for="FileUpload" class="form-label"> Image</label>
+                                        <asp:RequiredFieldValidator ID="RequiredImage" runat="server" ControlToValidate="FileUpload" CssClass="text-danger" 
+                                                                    Display="Dynamic" ErrorMessage="Image Is Required" ValidationGroup="slideshowGroup">
+                                         </asp:RequiredFieldValidator>
+                                        <asp:FileUpload ID="FileUpload" runat="server" onchange="readURL(this);" CssClass="form-control form-control-md"/>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <img id="blah" class="img-preview" src="Content/assets/img/default-cover.jpg" alt="your image" />
@@ -53,10 +56,11 @@
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-primary btn-fill mrg-r-10">
-                                    <i class="fa fa-floppy-o"></i>
-                                    Add
-                                </button>
+
+                                <asp:LinkButton ID="lnkSave" runat="server" OnClick="lnkSave_Click" ValidationGroup="slideshowGroup" CssClass="btn btn-primary btn-fill mrg-r-10">
+                                    <i class="fa fa-floppy-o"></i> Save
+                                </asp:LinkButton>
+                              
                                 <a href="SlideshowList.aspx" class="btn btn-dark ml-2 mr-2">
                                     <i class="fa fa-list"></i>
                                     List
@@ -70,4 +74,18 @@
         </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentScript" runat="server">
+
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </asp:Content>

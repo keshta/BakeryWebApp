@@ -14,7 +14,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific Footer for the given Id.
         /// </summary>
-        public Footer GetFooter(int id)
+        public Footer GetFooter(int id=1)
         {
             try
             {

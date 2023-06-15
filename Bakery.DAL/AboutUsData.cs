@@ -64,11 +64,13 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM AboutUs SET DescriptionAr='{obj.DescriptionEn}', DescriptionEn = '{obj.DescriptionEn}'";
+                string sql = $"UPDATE AboutUs SET DescriptionAr=@DescriptionAr, DescriptionEn = @DescriptionEn";
                              //$"WHERE ID={obj.ID} ";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionAr", obj.DescriptionAr));
+                    cmd.Parameters.Add(new SqlParameter("@DescriptionEn", obj.DescriptionEn));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

@@ -44,29 +44,29 @@
                             <div class="panel-body mh-panel pt-5">
                                 <div class="row">
 
-                                    <div class="form-group col-lg-6 col-md-6">
+                                    <div class="form-group col-lg-12 col-md-12">
                                         <label>Title</label>
-                                        <input type="text" class="form-control" aria-describedby="emailHelp">
+                                        <asp:RequiredFieldValidator ID="RequiredTitle" runat="server" ControlToValidate="txtTitle" CssClass="text-danger" 
+                                                                    ErrorMessage="Title Is Required" ValidationGroup="blogGroup">
+                                        </asp:RequiredFieldValidator>
+                                        <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" ToolTip="Location"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>Tile</label>
-                                        <input type="text" class="form-control" aria-describedby="emailHelp">
-                                    </div>
-
-                                    <div class="form-group col-lg-6 col-md-6">
+                                    <div class="form-group col-lg-12 col-md-12">
                                         <label>Description</label>
-                                        <textarea class="form-control"></textarea>
-                                    </div>
-
-                                    <div class="form-group col-lg-6 col-md-6">
-                                        <label>Description</label>
-                                        <textarea class="form-control"></textarea>
+                                        <asp:RequiredFieldValidator ID="RequiredDescription" runat="server" ControlToValidate="txtDescription" CssClass="text-danger" 
+                                                                    ErrorMessage="Description Is Required" ValidationGroup="blogGroup">
+                                         </asp:RequiredFieldValidator>
+                                        <textarea id="txtDescription" runat="server" class="form-control"></textarea>
                                     </div>
 
                                     <div class="col-lg-6 col-md-6">
                                         <label for="formFileLg" class="form-label"> Image</label>
-                                        <input class="form-control form-control-md" onchange="readURL(this);" id="formFileLg" type="file">
+                                        <asp:RequiredFieldValidator ID="RequiredImage" runat="server" ControlToValidate="FileUpload" CssClass="text-danger" 
+                                                                    Display="Dynamic" ErrorMessage="Image Is Required" ValidationGroup="blogGroup">
+                                         </asp:RequiredFieldValidator>
+
+                                        <asp:FileUpload ID="FileUpload" runat="server" onchange="readURL(this);" CssClass="form-control form-control-md"/>
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <img id="blah" class="img-preview" src="Content/assets/img/default-cover.jpg" alt="your image" />
@@ -74,11 +74,10 @@
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-primary btn-fill mrg-r-10">
-                                    <i class="fa fa-floppy-o"></i>
-                                    Add
-                                </button>
-                                <a href="list-blog.html" class="btn btn-dark ml-2 mr-2">
+                                <asp:LinkButton ID="lnkSave" runat="server" OnClick="lnkSave_Click" ValidationGroup="blogGroup" CssClass="btn btn-primary btn-fill mrg-r-10">
+                                    <i class="fa fa-floppy-o"></i> Add
+                                </asp:LinkButton>
+                                <a href="BlogList.aspx" class="btn btn-dark ml-2 mr-2">
                                     <i class="fa fa-list"></i>
                                     List
                                 </a>
@@ -91,4 +90,17 @@
         </div>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentScript" runat="server">
+     <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+     </script>
 </asp:Content>

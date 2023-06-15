@@ -49,87 +49,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td> Appel</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/blog/01.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddBlog.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td> Appel</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/blog/02.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddBlog.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> Appel</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/blog/03.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddBlog.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> Appel</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/blog/04.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddBlog.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> Appel</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/blog/05.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddBlog.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            <asp:Literal ID="LiteralBody" runat="server"></asp:Literal>
                                         </tbody>
                                     </table>
                                 </div>
@@ -141,6 +61,55 @@
 
             </div>
         </div>
+ <!-- Modal -->
+    <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header dir-ltr">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this item?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="btnConfirmDelete();">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentScript" runat="server">
+
+    <script>
+        var itemId = 0;
+        function btnDelete(id) {
+            itemId = id;
+            $("#deleteModal").modal('show');
+        }
+
+        function btnConfirmDelete() {
+            $.ajax({
+                type: "POST",
+                url: "BlogList.aspx/DeleteItem",
+                data: '{id: ' + parseInt(itemId) + '}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    $("#deleteModal").modal('hide');
+                    location.reload();
+                }, error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    debugger;
+                    //alert(XMLHttpRequest);
+                }
+            });
+
+        }
+    </script>
 </asp:Content>

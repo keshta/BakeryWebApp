@@ -25,6 +25,6 @@
 
         <div class="starter-template info-head">
             <h1> About Us </h1>
-            <h4 class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</h4>
+            <h4 class="lead" id="lblAboutUs" runat="server"></h4>
         </div>
 </asp:Content>

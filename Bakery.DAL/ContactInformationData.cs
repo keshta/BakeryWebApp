@@ -63,11 +63,16 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM ContactInformation SET Address='{obj.Address}', Phone = '{obj.Phone}', Email = '{obj.Email}', ContactNumber = '{obj.ContactNumber}', LocationMap = '{obj.LocationMap}'";
+                string sql = $"UPDATE ContactInformation SET Address=@Address, Phone=@Phone, Email=@Email, ContactNumber=@ContactNumber, LocationMap=@LocationMap ";
                              //$"WHERE ID={obj.ID} ";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@Address", obj.Address));
+                    cmd.Parameters.Add(new SqlParameter("@Phone", obj.Phone));
+                    cmd.Parameters.Add(new SqlParameter("@Email", obj.Email));
+                    cmd.Parameters.Add(new SqlParameter("@ContactNumber", obj.ContactNumber));
+                    cmd.Parameters.Add(new SqlParameter("@LocationMap", obj.LocationMap));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bakery.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,9 +10,11 @@ namespace Bakery.Web.App
 {
     public partial class About : Page
     {
+        AboutUsManager _aboutUsManager = new AboutUsManager();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var about = _aboutUsManager.GetAboutUs();
+            lblAboutUs.InnerText = about.DescriptionEn;
         }
     }
 }

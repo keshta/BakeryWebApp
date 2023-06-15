@@ -33,36 +33,42 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title"> Edit Contact Us</h4>
+                                <hr />
                                 <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+                                <asp:Label ID="lblError" runat="server" CssClass="text-danger" Text=""></asp:Label>
                             </div>
                             <div class="panel-body mh-panel pt-3">
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-md-6">
                                         <label>Location</label>
-                                        <input type="text" class="form-control" placeholder="Location" />
+                                         <asp:RequiredFieldValidator ID="RequiredLocation" runat="server" ControlToValidate="txtLocation" CssClass="text-danger" ErrorMessage="Location Is Required" ValidationGroup="contactGroup"></asp:RequiredFieldValidator>
+                                        <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" ToolTip="Location" Enabled="false"></asp:TextBox>
                                     </div>
 
                                     <div class="form-group col-lg-6 col-md-6">
                                         <label>Contact Number </label>
-                                        <input type="text" class="form-control" placeholder="Contact Number" />
+                                        <asp:RequiredFieldValidator ID="RequiredContactNo" runat="server" ControlToValidate="txtContactNo" CssClass="text-danger" ErrorMessage="Contact Number Is Required" ValidationGroup="contactGroup"></asp:RequiredFieldValidator>
+                                        <asp:TextBox ID="txtContactNo" runat="server" CssClass="form-control" ToolTip="Contact Number" Enabled="false"></asp:TextBox>
                                     </div>
 
                                     <div class="form-group col-12">
                                         <label>Email </label>
-                                        <input type="email" class="form-control" placeholder="Email" />
+                                        <asp:RequiredFieldValidator ID="RequiredEmail" runat="server" ControlToValidate="txtEmail" CssClass="text-danger" ErrorMessage="Email Is Required" ValidationGroup="contactGroup"></asp:RequiredFieldValidator>
+                                        <asp:RegularExpressionValidator ID="RegularEmail" runat="server" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="contactGroup" ErrorMessage="Email Is Invalid" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ToolTip="Email Address" Enabled="false"></asp:TextBox>
                                     </div>
 
                                     <div class="form-group col-12">
                                         <label>Map</label>
-                                        <textarea class="form-control" placeholder="Map"></textarea>
+                                        <asp:RequiredFieldValidator ID="RequiredMap" runat="server" ControlToValidate="txtMap" CssClass="text-danger" ErrorMessage="Map Is Required" ValidationGroup="contactGroup"></asp:RequiredFieldValidator>
+                                        <textarea class="form-control" id="txtMap" runat="server" placeholder="Map"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                <button type="button" class="btn btn-primary btn-fill mrg-r-10">
-                                    <i class="fa fa-floppy-o"></i>
-                                    Save
-                                </button>
+                                <asp:LinkButton ID="lnkSave" runat="server" OnClick="lnkSave_Click" CssClass="btn btn-primary btn-fill mrg-r-10">
+                                    <i class="fa fa-floppy-o"></i> Save
+                                </asp:LinkButton>
                             </div>
                         </div>
                     </div>

@@ -106,10 +106,13 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"INSERT INTO Brand(NameAr,NameEn,Image) VALUES('{obj.NameAr}','{obj.NameEn}','{obj.Image}')";
+                string sql = $"INSERT INTO Brand(NameAr,NameEn,Image) VALUES(@NameAr,@NameEn,@Image)";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@NameAr", obj.NameAr));
+                    cmd.Parameters.Add(new SqlParameter("@NameEn", obj.NameEn));
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }
@@ -136,11 +139,13 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"UPDATE FROM Brand SET NameAr='{obj.NameAr}', NameEn='{obj.NameEn}', Image = '{obj.Image}' " +
-                             $"WHERE ID={obj.ID}";
+                string sql = $"UPDATE Brand SET NameAr=@NameAr, NameEn=@NameEn, Image=@Image WHERE ID={obj.ID}";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@NameAr", obj.NameAr));
+                    cmd.Parameters.Add(new SqlParameter("@NameEn", obj.NameEn));
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

@@ -37,17 +37,17 @@
                     <div class="col-lg-8 col-md-8">
                         <div class="form-label-group">
                             <label>Full Name:</label>
-                            <span>Mohamed Alaa</span>
+                            <span id="lblFullName" runat="server"></span>
                         </div>
 
                         <div class="form-label-group">
                             <label>Email:</label>
-                            <span>email@example.com</span>
+                            <span id="lblEmail" runat="server"></span>
                         </div>
 
                         <div class="form-label-group">
                             <label>Mobile:</label>
-                            <span>+1 (123) 8425733</span>
+                            <span id="lblMobile" runat="server"></span>
                         </div>
                     </div>
                 </div>

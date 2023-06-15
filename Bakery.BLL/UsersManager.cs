@@ -110,7 +110,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Validates and update an existing Users.
         /// </summary>
-        public int Edit(Users objUsers)
+        public long Edit(Users objUsers)
         {
             try
             {

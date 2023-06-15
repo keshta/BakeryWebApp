@@ -1258,3 +1258,10 @@ body {
     background-color: #d20b55;
 }
 
+.dir-ltr{
+    direction:ltr !important;
+}
+
+.dir-rtl {
+    direction: rtl !important;
+}

@@ -78,6 +78,9 @@ namespace Bakery.DAL
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(email))
+                    return false;
+
                 string sql = "SELECT COUNT(*) FROM Users ";
                 if (id > 0)
                     sql += $" WHERE (lower(Email) = lower('{email}') and ID = {id}) or (lower(Email) = lower('{email}') and ID <> {id})";
@@ -110,6 +113,9 @@ namespace Bakery.DAL
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(username))
+                    return false;
+
                 string sql = "SELECT COUNT(*) FROM Users ";
                 if (id > 0)
                     sql += $" WHERE (Username = '{username}' and ID={id}) or (Username='{username}' and ID <> {id})";
@@ -143,6 +149,9 @@ namespace Bakery.DAL
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(mobile))
+                    return false;
+
                 string sql = "SELECT COUNT(*) FROM Users ";
                 if (id > 0)
                     sql += $" WHERE (Mobile = '{mobile}' and ID={id}) or (Mobile='{mobile}' and ID <> {id})";
@@ -259,7 +268,7 @@ namespace Bakery.DAL
         }
 
         /// <summary>
-        /// Inserts a new Users or Update an existing Users in database as per Upsert Flag.
+        /// Inserts a new User in database as per Insert Flag.
         /// </summary>
         public long Insert(Users obj)
         {
@@ -267,12 +276,18 @@ namespace Bakery.DAL
 
             try
             {
-                string sql = $"INSERT INTO Users(Username,Password,FullName,Email,Image,IsAdmin,IsActive,DateCreated) " +
-                             $"VALUES('{obj.Username}','{obj.Password}','{obj.FullName}','{obj.Email}','{obj.Image}',0,1,GETDATE()) " +
+                string sql = $"INSERT INTO Users(Username,Password,FullName,Email,Image,Mobile,IsAdmin,IsActive,DateCreated) " +
+                             $"VALUES(@Username,@Password,@FullName,@Email,@Image,@v,0,1,GETDATE()) " +
                              $"Select cast(Scope_Identity() as bigint)";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@Username", obj.Username));
+                    cmd.Parameters.Add(new SqlParameter("@Password", obj.Password));
+                    cmd.Parameters.Add(new SqlParameter("@FullName", obj.FullName));
+                    cmd.Parameters.Add(new SqlParameter("@Email", obj.Email));
+                    cmd.Parameters.Add(new SqlParameter("@Image", obj.Image));
+                    cmd.Parameters.Add(new SqlParameter("@Mobile", obj.Mobile));
                     result = (long)cmd.ExecuteScalar();
                     con.Close();
                 }
@@ -293,23 +308,30 @@ namespace Bakery.DAL
         /// <summary>
         /// Update an existing Users in database as per Upsert Flag.
         /// </summary>
-        public int Update(Users obj)
+        public long Update(Users obj)
         {
             int result = 0;
 
             try
             {
-                string sql = $"UPDATE FROM Users SET Password='{obj.Password}', FullName='{obj.FullName}', Mobile='{obj.Mobile}' " +
-                             $"WHERE ID={obj.ID}";
+                string sql = $"UPDATE Users SET FullName=@FullName, Mobile=@Mobile ";
+
+                if (!string.IsNullOrWhiteSpace(obj.Password))
+                    sql = $"{sql} ,Password=@Password ";
+
+                sql = $"{sql} WHERE ID={obj.ID}";
 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
+                    cmd.Parameters.Add(new SqlParameter("@Password", obj.Password));
+                    cmd.Parameters.Add(new SqlParameter("@FullName", obj.FullName));
+                    cmd.Parameters.Add(new SqlParameter("@Mobile", obj.Mobile));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 //throw;
             }
@@ -318,7 +340,7 @@ namespace Bakery.DAL
                 if (con.State != ConnectionState.Closed)
                     con.Close();
             }
-            return result;
+            return obj.ID;
         }
 
 
