@@ -43,93 +43,13 @@
                                 <table class="table table-bordered text-center mt-3">
                                     <thead class="bg-rosy text-white">
                                         <tr>
-                                            <th scope="col">Title</th>
+                                            <th scope="col">Name</th>
                                             <th scope="col">Image</th>
                                             <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Appel</td>
-                                            <td>
-                                                <img class="tbl-img2" src="Content/assets/img/brand/01.png" />
-                                            </td>
-                                            <td>
-                                                <a href="AddBrand.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Edit
-                                                </a>
-                                                <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                    <i class="fa fa-trash"></i>
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Appel</td>
-                                            <td>
-                                                <img class="tbl-img2" src="Content/assets/img/brand/02.png" />
-                                            </td>
-                                            <td>
-                                                <a href="AddBrand.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Edit
-                                                </a>
-                                                <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                    <i class="fa fa-trash"></i>
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Appel</td>
-                                            <td>
-                                                <img class="tbl-img2" src="Content/assets/img/brand/03.png" />
-                                            </td>
-                                            <td>
-                                                <a href="AddBrand.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Edit
-                                                </a>
-                                                <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                    <i class="fa fa-trash"></i>
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Appel</td>
-                                            <td>
-                                                <img class="tbl-img2" src="Content/assets/img/brand/04.png" />
-                                            </td>
-                                            <td>
-                                                <a href="AddBrand.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Edit
-                                                </a>
-                                                <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                    <i class="fa fa-trash"></i>
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Appel</td>
-                                            <td>
-                                                <img class="tbl-img2" src="Content/assets/img/brand/05.png" />
-                                            </td>
-                                            <td>
-                                                <a href="AddBrand.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                    <i class="fa fa-pencil"></i>
-                                                    Edit
-                                                </a>
-                                                <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                    <i class="fa fa-trash"></i>
-                                                    Delete
-                                                </a>
-                                            </td>
-                                        </tr>
+                                        <asp:Literal ID="LiteralBody" runat="server"></asp:Literal>
                                     </tbody>
                                 </table>
                             </div>

@@ -43,7 +43,6 @@
                                     <table class="table table-bordered text-center mt-3">
                                         <thead class="bg-rosy text-white">
                                             <tr>
-                                                <th scope="col">#</th>
                                                 <th scope="col">Name</th>
                                                 <th scope="col">Brand</th>
                                                 <th scope="col">Category</th>
@@ -53,109 +52,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td> 1</td>
-                                                <td> Donuts</td>
-                                                <td> Appel</td>
-                                                <td> Appel</td>
-                                                <td> $12,00</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/product/01.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddProduct.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 2</td>
-                                                <td> Donuts</td>
-                                                <td> Appel</td>
-                                                <td> Appel</td>
-                                                <td> $12,00</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/product/02.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddProduct.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td> 3</td>
-                                                <td> Donuts</td>
-                                                <td> Appel</td>
-                                                <td> Appel</td>
-                                                <td> $12,00</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/product/03.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddProduct.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td> 4</td>
-                                                <td> Donuts</td>
-                                                <td> Appel</td>
-                                                <td> Appel</td>
-                                                <td> $12,00</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/product/04.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddProduct.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td> 5</td>
-                                                <td> Donuts</td>
-                                                <td> Appel</td>
-                                                <td> Appel</td>
-                                                <td> $12,00</td>
-                                                <td>
-                                                    <img class="tbl-img2" src="Content/assets/img/product/05.jpg" />
-                                                </td>
-                                                <td>
-                                                    <a href="AddProduct.aspx" class="btn btn-info btn-fill mrg-r-10">
-                                                        <i class="fa fa-pencil"></i>
-                                                        Edit
-                                                    </a>
-                                                    <a href="javascript:void()" class="btn btn-danger" onclick="btnDelete(1)">
-                                                        <i class="fa fa-trash"></i>
-                                                        Delete
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                            <asp:Literal ID="LiteralBody" runat="server"></asp:Literal>
                                         </tbody>
                                     </table>
                                 </div>

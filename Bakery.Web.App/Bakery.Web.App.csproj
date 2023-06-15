@@ -185,9 +185,11 @@
     <Content Include="Content\site.js" />
     <Content Include="EditAboutUs.aspx" />
     <Content Include="EditBlog.aspx" />
+    <Content Include="EditBrand.aspx" />
     <Content Include="EditContactUs.aspx" />
     <Content Include="EditFooter.aspx" />
     <Content Include="EditInformation.aspx" />
+    <Content Include="EditProduct.aspx" />
     <Content Include="EditProfile.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -372,6 +374,13 @@
     <Compile Include="EditBlog.aspx.designer.cs">
       <DependentUpon>EditBlog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditBrand.aspx.cs">
+      <DependentUpon>EditBrand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditBrand.aspx.designer.cs">
+      <DependentUpon>EditBrand.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EditContactUs.aspx.cs">
       <DependentUpon>EditContactUs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -392,6 +401,13 @@
     </Compile>
     <Compile Include="EditInformation.aspx.designer.cs">
       <DependentUpon>EditInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditProduct.aspx.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditProduct.aspx.designer.cs">
+      <DependentUpon>EditProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditProfile.aspx.cs">
       <DependentUpon>EditProfile.aspx</DependentUpon>

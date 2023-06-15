@@ -9,5 +9,7 @@ namespace Bakery.Web.App.Helper
     {
         public static string Slideshow = "/Attachment/Slideshow";
         public static string Blog = "/Attachment/Blog";
+        public static string Brand = "/Attachment/Brand";
+        public static string Product = "/Attachment/Product";
     }
 }

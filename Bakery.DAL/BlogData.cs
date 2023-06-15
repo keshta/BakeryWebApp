@@ -62,7 +62,7 @@ namespace Bakery.DAL
             List<Blog> list = new List<Blog>();
             try
             {
-                var sqlCommand = new SqlCommand("SELECT top 1 * FROM Blog", con);
+                var sqlCommand = new SqlCommand("SELECT * FROM Blog", con);
                 SqlDataReader dataReader;
                 con.Open();
                 dataReader = sqlCommand.ExecuteReader();
@@ -143,7 +143,7 @@ namespace Bakery.DAL
             try
             {
                 string sql = $"UPDATE Blog SET TitleAr=@TitleAr, TitleEn=@TitleEn, DescriptionAr=@DescriptionAr, " +
-                                         $"DescriptionEn = @Description,Image = @Image " +
+                                         $"DescriptionEn = @DescriptionEn,Image = @Image " +
                              $"WHERE ID={obj.ID}";
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))

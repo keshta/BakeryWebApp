@@ -19,30 +19,39 @@ namespace Bakery.Web.App
             if (!string.IsNullOrWhiteSpace(Request.QueryString["id"]))
             {
                 id = int.Parse(Request.QueryString["id"]);
-                var blog = _blogManager.GetBlog(id);
-                txtTitle.Text = blog.TitleEn;
-                txtDescription.InnerText = blog.DescriptionEn;
-                blah.Src = $"{DirectlyFilePath.Blog}/{blog.Image}";
+                if (!Page.IsPostBack)
+                {
+                    var blog = _blogManager.GetBlog(id);
+                    txtTitle.Text = blog.TitleEn;
+                    txtDescription.InnerText = blog.DescriptionEn;
+                    blah.Src = $"{DirectlyFilePath.Blog}/{blog.Image}";
+                }
             }
-
-            
         }
 
         protected void lnkSave_Click(object sender, EventArgs e)
         {
             string filename = $"{Guid.NewGuid()}{Path.GetExtension(FileUpload.FileName)}";
-
             var blog = _blogManager.GetBlog(id);
-            blog.TitleEn = blog.TitleAr = txtTitle.Text.Trim();
-            blog.DescriptionEn = blog.DescriptionAr = txtDescription.InnerText.Trim();
-            var res = _blogManager.Edit(blog);
+            blog.TitleEn = txtTitle.Text.Trim();
+            blog.TitleAr = txtTitle.Text.Trim();
+            blog.DescriptionEn = txtDescription.InnerText.Trim();
+            blog.DescriptionAr = txtDescription.InnerText.Trim();
+
             string tempPath = Server.MapPath(DirectlyFilePath.Blog);
             if (!Directory.Exists(tempPath))
                 Directory.CreateDirectory(tempPath);
 
             if(FileUpload.HasFile)
-                FileUpload.SaveAs($"{tempPath}\\{filename}");
+            {
+                if (File.Exists($"{tempPath}\\{blog.Image}"))
+                    File.Delete($"{tempPath}\\{blog.Image}");
 
+                blog.Image = filename;
+                FileUpload.SaveAs($"{tempPath}\\{filename}");
+            }
+
+            var res = _blogManager.Edit(blog);
             Response.Redirect("BlogList.aspx");
         }
     }

@@ -49,7 +49,7 @@
                                         <asp:RequiredFieldValidator ID="RequiredTitle" runat="server" ControlToValidate="txtTitle" CssClass="text-danger" 
                                                                     ErrorMessage="Title Is Required" ValidationGroup="blogGroup">
                                         </asp:RequiredFieldValidator>
-                                        <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" ToolTip="Location" Enabled="false"></asp:TextBox>
+                                        <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control" ToolTip="Location"></asp:TextBox>
                                     </div>
 
                                     <div class="form-group col-lg-12 col-md-12">
@@ -95,7 +95,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result);
+                    $('.img-preview').attr('src', e.target.result);
                 };
 
                 reader.readAsDataURL(input.files[0]);
