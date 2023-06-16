@@ -1061,10 +1061,12 @@ body {
 
 
 .lr-content.user-form {
-    width: 60%;
+    /*width: 60%;*/
+    width: 80%;
     margin: 60px auto 100px auto;
     border: 1px solid #fff;
-    padding: 25px 50px 50px 80px;
+    /*padding: 25px 50px 50px 80px;*/
+    padding: 25px;
     position: relative;
     z-index: 2;
     background: #f7f7f7;
