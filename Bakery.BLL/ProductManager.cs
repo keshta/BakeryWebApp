@@ -13,7 +13,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific Product for the given Id.
         /// </summary>
-        public Product GetProduct(int id)
+        public Product Get(int id)
         {
             try
             {
@@ -28,11 +28,26 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a list of Product.
         /// </summary>
-        public List<Product> GetProductList()
+        public List<Product> GetList()
         {
             try
             {
                 return new ProductData().Select();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Returns a list of Product.
+        /// </summary>
+        public List<Product> GetList(int top)
+        {
+            try
+            {
+                return new ProductData().SelectByTop(top);
             }
             catch (Exception)
             {

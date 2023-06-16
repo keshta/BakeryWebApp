@@ -24,7 +24,7 @@ namespace Bakery.Web.App
 
         string GetTable()
         {
-            var list = _blogManager.GetBlogList();
+            var list = _blogManager.GetList();
             var str = new StringBuilder();
             string path = DirectlyFilePath.Blog;
             foreach (var item in list)
@@ -46,7 +46,7 @@ namespace Bakery.Web.App
         {
             try
             {
-                var obj = _blogManager.GetBlog(id);
+                var obj = _blogManager.Get(id);
                 string path = HostingEnvironment.MapPath($"{DirectlyFilePath.Blog}/{obj.Image}");
                 if (File.Exists(path))
                     File.Delete(path);

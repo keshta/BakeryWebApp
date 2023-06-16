@@ -68,11 +68,11 @@ namespace Bakery.DAL
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))
                 {
-                    cmd.Parameters.Add(new SqlParameter("@Address", obj.Address));
-                    cmd.Parameters.Add(new SqlParameter("@Phone", obj.Phone));
-                    cmd.Parameters.Add(new SqlParameter("@Email", obj.Email));
-                    cmd.Parameters.Add(new SqlParameter("@ContactNumber", obj.ContactNumber));
-                    cmd.Parameters.Add(new SqlParameter("@LocationMap", obj.LocationMap));
+                    cmd.Parameters.Add(new SqlParameter("@Address", obj.Address??""));
+                    cmd.Parameters.Add(new SqlParameter("@Phone", obj.Phone??""));
+                    cmd.Parameters.Add(new SqlParameter("@Email", obj.Email??""));
+                    cmd.Parameters.Add(new SqlParameter("@ContactNumber", obj.ContactNumber??""));
+                    cmd.Parameters.Add(new SqlParameter("@LocationMap", obj.LocationMap??""));
                     result = cmd.ExecuteNonQuery();
                     con.Close();
                 }

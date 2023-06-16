@@ -21,7 +21,7 @@ namespace Bakery.Web.App
                 id = int.Parse(Request.QueryString["id"]);
                 if (!Page.IsPostBack)
                 {
-                    var brand = _brandManager.GetBrand(id);
+                    var brand = _brandManager.Get(id);
                     txtName.Text = brand.NameEn;
                     blah.Src = $"{DirectlyFilePath.Brand}/{brand.Image}";
                 }
@@ -32,7 +32,7 @@ namespace Bakery.Web.App
         protected void lnkSave_Click(object sender, EventArgs e)
         {
             string filename = $"{Guid.NewGuid()}{Path.GetExtension(FileUpload.FileName)}";
-            var brand = _brandManager.GetBrand(id);
+            var brand = _brandManager.Get(id);
             brand.NameEn = txtName.Text.Trim();
             brand.NameAr = txtName.Text.Trim();
 

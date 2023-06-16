@@ -14,7 +14,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific AboutUs for the given Id.
         /// </summary>
-        public AboutUs GetAboutUs(int id=1)
+        public AboutUs Get(int id=1)
         {
             try
             {

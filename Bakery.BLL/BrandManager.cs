@@ -13,7 +13,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific Brand for the given Id.
         /// </summary>
-        public Brand GetBrand(int id)
+        public Brand Get(int id)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a list of Brand.
         /// </summary>
-        public List<Brand> GetBrandList()
+        public List<Brand> GetList()
         {
             try
             {

@@ -13,7 +13,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific Blog for the given Id.
         /// </summary>
-        public Blog GetBlog(int id)
+        public Blog Get(int id)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a list of Blog.
         /// </summary>
-        public List<Blog> GetBlogList()
+        public List<Blog> GetList()
         {
             try
             {

@@ -16,7 +16,7 @@ namespace Bakery.Web.App
         {
             if (!IsPostBack)
             {
-                var obj = _aboutUsManager.GetAboutUs();
+                var obj = _aboutUsManager.Get();
                 txtDescription.InnerText = obj.DescriptionEn;
             }
         }

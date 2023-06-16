@@ -33,7 +33,6 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">Edit Information</h4>
-                            <hr />
                             <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
                         </div>
                         <div class="panel-body mh-panel pt-3">

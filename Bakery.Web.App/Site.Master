@@ -60,7 +60,7 @@
                             <div class="contact-info">
                                 <a href="tel:https://bakery.themability.com/index.php?route=information/contact&amp;language=en-gb">
                                     <i class="fa fa-phone"></i>
-                                    <span class="">+1 (123) 8425733</span>
+                                    <span class="" id="lblHeaderPhone" runat="server"></span>
                                 </a>
                             </div>
                         </div>
@@ -154,9 +154,7 @@
                                 <!--<a href="Home.aspx" class="footer-logo">
                             <img src="https://bakery.themability.com/image/catalog/logo.png" alt="footer_logo" class="img-fluid">
                         </a>-->
-                                <p class="footer-info-text">
-                                    Reference site about Lorem Ipsum, giving information on its origins, as well as a random Lipsum generator.
-                                </p>
+                                <p class="footer-info-text" id="lblFooterSummary" runat="server"></p>
                                 <div class="footer-social-link">
                                     <h3>Follow us</h3>
                                     <ul>
@@ -205,7 +203,7 @@
                                         </div>
                                         <!-- End contact Icon -->
                                         <div class="contact-info">
-                                            <h3>Jaipur India</h3>
+                                            <h3 id="lblFooterAddress" runat="server">Jaipur India</h3>
                                             <p>5353 Road Avenue</p>
                                         </div>
                                         <!-- End Contact Info -->
@@ -220,7 +218,7 @@
                                         </div>
                                         <!-- End contact Icon -->
                                         <div class="contact-info">
-                                            <h3>95 711 9 5353</h3>
+                                            <h3 id="lblFooterPhone" runat="server">95 711 9 5353</h3>
                                             <p>Give us a call</p>
                                         </div>
                                         <!-- End Contact Info -->
@@ -275,11 +273,8 @@
                                             <h3>Subscribe</h3>
                                             <span class="animate-border border-black"></span>
                                         </div>
-                                        <p>
-                                            <!-- Don’t miss to subscribe to our new feeds, kindly fill the form below. -->
-                                            Reference site about Lorem Ipsum, giving information on its origins, as well.
-                                        </p>
-                                        <form action="#">
+                                        <p id="lblFooterSubscribe" runat="server"> </p>
+                                        <div action="#">
                                             <div class="form-row">
                                                 <div class="col dk-footer-form">
                                                     <input type="email" class="form-control" placeholder="Email Address">
@@ -288,7 +283,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                         <!-- End form -->
                                     </div>
                                     <!-- End footer widget -->

@@ -57,7 +57,7 @@ namespace Bakery.Web.App
                     Mobile = (txtMobile.Text??"").Trim(),
                 };
                 var userId = _usersManager.Edit(obj);
-                var user = _usersManager.GetUser(userId);
+                var user = _usersManager.Get(userId);
                 AppCookies.AddCookie(user);
                 Response.Redirect("Profile.aspx");
             }

@@ -19,13 +19,13 @@ namespace Bakery.Web.App
         {
             if (!Page.IsPostBack)
             {
-                dropBrand.DataSource = _brandManager.GetBrandList();
+                dropBrand.DataSource = _brandManager.GetList();
                 dropBrand.DataTextField = "NameEn";
                 dropBrand.DataValueField = "ID";
                 dropBrand.DataBind();
                 //dropBrand.SelectedIndex = 0;
 
-                dropCategory.DataSource = _categoryManager.GetCategoryList();
+                dropCategory.DataSource = _categoryManager.GetList();
                 dropCategory.DataTextField = "TitleEn";
                 dropCategory.DataValueField = "ID";
                 dropCategory.DataBind();

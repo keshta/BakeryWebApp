@@ -13,7 +13,7 @@ namespace Bakery.Web.App
         AboutUsManager _aboutUsManager = new AboutUsManager();
         protected void Page_Load(object sender, EventArgs e)
         {
-            var about = _aboutUsManager.GetAboutUs();
+            var about = _aboutUsManager.Get();
             lblAboutUs.InnerText = about.DescriptionEn;
         }
     }

@@ -21,7 +21,7 @@ namespace Bakery.Web.App
                 id = int.Parse(Request.QueryString["id"]);
                 if (!Page.IsPostBack)
                 {
-                    var blog = _blogManager.GetBlog(id);
+                    var blog = _blogManager.Get(id);
                     txtTitle.Text = blog.TitleEn;
                     txtDescription.InnerText = blog.DescriptionEn;
                     blah.Src = $"{DirectlyFilePath.Blog}/{blog.Image}";
@@ -32,7 +32,7 @@ namespace Bakery.Web.App
         protected void lnkSave_Click(object sender, EventArgs e)
         {
             string filename = $"{Guid.NewGuid()}{Path.GetExtension(FileUpload.FileName)}";
-            var blog = _blogManager.GetBlog(id);
+            var blog = _blogManager.Get(id);
             blog.TitleEn = txtTitle.Text.Trim();
             blog.TitleAr = txtTitle.Text.Trim();
             blog.DescriptionEn = txtDescription.InnerText.Trim();

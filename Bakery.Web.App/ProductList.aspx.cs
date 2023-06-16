@@ -26,9 +26,9 @@ namespace Bakery.Web.App
 
         string GetTable()
         {
-            var brands = _brandManager.GetBrandList();
-            var categories = _categoryManager.GetCategoryList();
-            var list = _productManager.GetProductList();
+            var brands = _brandManager.GetList();
+            var categories = _categoryManager.GetList();
+            var list = _productManager.GetList();
 
             var str = new StringBuilder();
             string path = DirectlyFilePath.Product;
@@ -57,7 +57,7 @@ namespace Bakery.Web.App
         {
             try
             {
-                var obj = _productManager.GetProduct(id);
+                var obj = _productManager.Get(id);
                 string path = HostingEnvironment.MapPath($"{DirectlyFilePath.Product}/{obj.Image}");
                 if (File.Exists(path))
                     File.Delete(path);

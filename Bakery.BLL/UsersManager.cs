@@ -65,7 +65,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific User for the given Id.
         /// </summary>
-        public Users GetUser(long id)
+        public Users Get(long id)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a list of Users.
         /// </summary>
-        public List<Users> GetUsersList()
+        public List<Users> GetList()
         {
             try
             {

@@ -13,7 +13,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific Slideshow for the given Id.
         /// </summary>
-        public Slideshow GetSlideshow(int id)
+        public Slideshow Get(int id)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a list of Slideshow.
         /// </summary>
-        public List<Slideshow> GetSlideshowList()
+        public List<Slideshow> GetList()
         {
             try
             {

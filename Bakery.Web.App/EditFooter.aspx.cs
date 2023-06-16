@@ -17,7 +17,7 @@ namespace Bakery.Web.App
         {
             if (!Page.IsPostBack)
             {
-                var obj = _footerManager.GetFooter();
+                var obj = _footerManager.Get();
                 txtSubscribe.InnerText = obj.SubscribeEn;
                 txtSummary.InnerText = obj.SummaryEn;
             }

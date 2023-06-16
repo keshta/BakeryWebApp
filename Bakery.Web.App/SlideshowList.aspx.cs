@@ -24,7 +24,7 @@ namespace Bakery.Web.App
 
         string GetTable()
         {
-            var list = _slideshowManager.GetSlideshowList();
+            var list = _slideshowManager.GetList();
             var str = new StringBuilder();
             string path = DirectlyFilePath.Slideshow;
             foreach (var item in list)
@@ -44,7 +44,7 @@ namespace Bakery.Web.App
         {
             try
             {
-                var obj = _slideshowManager.GetSlideshow(id);
+                var obj = _slideshowManager.Get(id);
                 string path = HostingEnvironment.MapPath($"{DirectlyFilePath.Slideshow}/{obj.Image}");
                 if (File.Exists(path))
                     File.Delete(path);

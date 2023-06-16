@@ -14,7 +14,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific Category for the given Id.
         /// </summary>
-        public Category GetCategory(int id)
+        public Category Get(int id)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a list of Category.
         /// </summary>
-        public List<Category> GetCategoryList()
+        public List<Category> GetList()
         {
             try
             {

@@ -14,7 +14,7 @@ namespace Bakery.BLL
         /// <summary>
         /// Returns a specific Information for the given Id.
         /// </summary>
-        public Information GetInformation(int id=1)
+        public Information Get(int id=1)
         {
             try
             {

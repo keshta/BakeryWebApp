@@ -11,7 +11,7 @@ namespace Bakery.Web.App
 {
 
 
-    public partial class EditContactUs
+    public partial class EditContactUs1
     {
 
         /// <summary>
@@ -87,22 +87,22 @@ namespace Bakery.Web.App
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// RequiredMap control.
+        /// RequiredPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredMap;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredPhone;
 
         /// <summary>
-        /// txtMap control.
+        /// txtPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtMap;
+        protected global::System.Web.UI.WebControls.TextBox txtPhone;
 
         /// <summary>
         /// lnkSave control.

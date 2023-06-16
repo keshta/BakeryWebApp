@@ -23,14 +23,14 @@ namespace Bakery.Web.App
                 id = int.Parse(Request.QueryString["id"]);
                 if (!Page.IsPostBack)
                 {
-                    var product = _productManager.GetProduct(id);
-                    dropBrand.DataSource = _brandManager.GetBrandList();
+                    var product = _productManager.Get(id);
+                    dropBrand.DataSource = _brandManager.GetList();
                     dropBrand.DataTextField = "NameEn";
                     dropBrand.DataValueField = "ID";
                     dropBrand.DataBind();
                     //dropBrand.SelectedIndex = 0;
 
-                    dropCategory.DataSource = _categoryManager.GetCategoryList();
+                    dropCategory.DataSource = _categoryManager.GetList();
                     dropCategory.DataTextField = "TitleEn";
                     dropCategory.DataValueField = "ID";
                     dropCategory.DataBind();
@@ -55,7 +55,7 @@ namespace Bakery.Web.App
         protected void lnkSave_Click(object sender, EventArgs e)
         {
             string filename = $"{Guid.NewGuid()}{Path.GetExtension(FileUpload.FileName)}";
-            var product = _productManager.GetProduct(id);
+            var product = _productManager.Get(id);
             product.NameAr = txtName.Text.Trim();
             product.NameEn = txtName.Text.Trim();
             product.BrandId = int.Parse(dropBrand.SelectedValue);

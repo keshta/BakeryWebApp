@@ -16,7 +16,7 @@ namespace Bakery.Web.App
         {
             if (!Page.IsPostBack)
             {
-                var obj = _informationManager.GetInformation();
+                var obj = _informationManager.Get();
                 txtExperience.Text = obj.OurExperience;
                 txtSpecialist.Text = obj.CakeSpecialist;
                 txtProject.Text = obj.CompleteProject;

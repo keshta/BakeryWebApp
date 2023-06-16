@@ -24,7 +24,7 @@ namespace Bakery.Web.App
 
         string GetTable()
         {
-            var list = _brandManager.GetBrandList();
+            var list = _brandManager.GetList();
             var str = new StringBuilder();
             string path = DirectlyFilePath.Brand;
             foreach (var item in list)
@@ -46,7 +46,7 @@ namespace Bakery.Web.App
         {
             try
             {
-                var obj = _brandManager.GetBrand(id);
+                var obj = _brandManager.Get(id);
                 string path = HostingEnvironment.MapPath($"{DirectlyFilePath.Brand}/{obj.Image}");
                 if (File.Exists(path))
                     File.Delete(path);

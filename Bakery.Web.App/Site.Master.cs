@@ -1,4 +1,5 @@
-﻿using Bakery.Web.App.Model;
+﻿using Bakery.BLL;
+using Bakery.Web.App.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace Bakery.Web.App
 {
     public partial class SiteMaster : MasterPage
     {
+        FooterManager _footerManager = new FooterManager();
+        ContactInformationManager _contacManager = new ContactInformationManager();
         protected void Page_Load(object sender, EventArgs e)
         {
             lnkSettings.Visible = AppCookies.IsAdmin;
@@ -27,7 +30,15 @@ namespace Bakery.Web.App
                 divSettingUser.Visible = false;
                 lnkSettings.Visible = false;
             }
-            
+
+            var footer = _footerManager.Get();
+            var contac = _contacManager.Get();
+            lblFooterSubscribe.InnerText = footer.SubscribeEn;
+            lblFooterSummary.InnerText = footer.SummaryEn;
+            lblFooterPhone.InnerText = contac.Phone;
+            lblFooterAddress.InnerText = contac.Address;
+            lblHeaderPhone.InnerText = contac.Phone;
+
         }
 
         protected void lnkLogout_Click(object sender, EventArgs e)
