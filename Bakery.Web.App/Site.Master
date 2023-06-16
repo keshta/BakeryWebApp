@@ -190,7 +190,7 @@
                             <!-- End Footer info -->
                             <div class="footer-awarad">
                                 <img src="Content/assets/images/icon/best.png" alt="">
-                                <p>Best Design Company 2019</p>
+                                <p>Best Design Company 2023</p>
                             </div>
                         </div>
                         <!-- End Col -->
@@ -204,7 +204,7 @@
                                         <!-- End contact Icon -->
                                         <div class="contact-info">
                                             <h3 id="lblFooterAddress" runat="server">Jaipur India</h3>
-                                            <p>5353 Road Avenue</p>
+                                            <%--<p>5353 Road Avenue</p>--%>
                                         </div>
                                         <!-- End Contact Info -->
                                     </div>
@@ -219,7 +219,7 @@
                                         <!-- End contact Icon -->
                                         <div class="contact-info">
                                             <h3 id="lblFooterPhone" runat="server">95 711 9 5353</h3>
-                                            <p>Give us a call</p>
+                                            <p> &nbsp; Give us a call</p>
                                         </div>
                                         <!-- End Contact Info -->
                                     </div>
@@ -237,30 +237,19 @@
                                         </div>
                                         <ul>
                                             <li>
-                                                <a href="#">About us</a>
+                                                <a href="About.aspx">About us</a>
                                             </li>
                                             <li>
-                                                <a href="#">Services</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Projects</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Our Team</a>
+                                                <a href="Contact.aspx">Contact us</a>
                                             </li>
                                         </ul>
+
                                         <ul>
                                             <li>
-                                                <a href="#">Contact us</a>
+                                                <a href="Product.aspx">Product</a>
                                             </li>
                                             <li>
-                                                <a href="#">Blog</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Testimonials</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Faq</a>
+                                                <a href="Blog.aspx">Blog</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -273,7 +262,7 @@
                                             <h3>Subscribe</h3>
                                             <span class="animate-border border-black"></span>
                                         </div>
-                                        <p id="lblFooterSubscribe" runat="server"> </p>
+                                        <p id="lblFooterSubscribe" runat="server"></p>
                                         <div action="#">
                                             <div class="form-row">
                                                 <div class="col dk-footer-form">
@@ -310,16 +299,10 @@
                                 <div class="copyright-menu">
                                     <ul>
                                         <li>
-                                            <a href="#">Home</a>
+                                            <a href="Home.aspx">Home</a>
                                         </li>
                                         <li>
-                                            <a href="#">Terms</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Privacy Policy</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Contact</a>
+                                            <a href="Contact.aspx">Contact</a>
                                         </li>
                                     </ul>
                                 </div>

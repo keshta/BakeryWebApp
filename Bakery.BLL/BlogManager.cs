@@ -39,7 +39,21 @@ namespace Bakery.BLL
                 throw;
             }
         }
-
+    
+        /// <summary>
+        /// Returns a list of Blog.
+        /// </summary>
+        public List<Blog> GetLatestList()
+        {
+            try
+            {
+                return new BlogData().SelectLatest();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         /// <summary>
         /// Validates and creates a new Blog.
         /// </summary>

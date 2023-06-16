@@ -97,6 +97,49 @@ namespace Bakery.DAL
             return list;
         }
 
+     /// <summary>
+        /// Execute the Select Query and returns a List of Product.
+        /// </summary>
+        public List<Product> SelectLatest()
+        {
+            List<Product> list = new List<Product>();
+            try
+            {
+                var sqlCommand = new SqlCommand("SELECT top 3 * FROM Product order by DateCreated desc", con);
+                SqlDataReader dataReader;
+                con.Open();
+                dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    var obj = new Product();
+                    for (int inc = 0; inc < dataReader.FieldCount; inc++)
+                    {
+                        if (!string.IsNullOrWhiteSpace(dataReader.GetValue(inc).ToString()))
+                        {
+                            Type type = obj.GetType();
+                            var prop = type.GetProperty(dataReader.GetName(inc));
+                            prop.SetValue(obj, dataReader.GetValue(inc), null);
+                        }
+                    }
+
+                    list.Add(obj);
+                }
+                dataReader.Close();
+                sqlCommand.Dispose();
+            }
+            catch (Exception ex)
+            {
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            return list;
+        }
+
 
         /// <summary>
         /// Execute the Select Query and returns a List of Product.
@@ -151,9 +194,9 @@ namespace Bakery.DAL
             try
             {
                 string sql = $"INSERT INTO Product(NameAr,NameEn,BrandId,CategoryId,Price,Discount,SummaryAr," +
-                                                 $"SummaryEn,InformationAr,InformationEn,DescriptionAr,DescriptionEn,Image) " +
+                                                 $"SummaryEn,InformationAr,InformationEn,DescriptionAr,DescriptionEn,Image, DateCreated) " +
                              $"VALUES(@NameAr,@NameEn,@BrandId,@CategoryId,@Price,@Discount,@SummaryAr, " +
-                                    $"@SummaryEn,@InformationAr,@InformationEn,@DescriptionAr,@DescriptionEn,@Image)";
+                                    $"@SummaryEn,@InformationAr,@InformationEn,@DescriptionAr,@DescriptionEn,@Image,GETDATE())";
 
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand(sql, con))

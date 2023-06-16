@@ -41,7 +41,7 @@ namespace Bakery.Web.App
                 str.Append($"<td> {item.NameEn} </td>");
                 str.Append($"<td> {brand.TitleEn} </td>");
                 str.Append($"<td> {category.TitleEn} </td>");
-                str.Append($"<td> {item.Price} </td>");
+                str.Append($"<td> {item.Price.GetFormatPrice()} </td>");
                 str.Append($"<td> <img class='tbl-img' src='{path}/{item.Image}'/></td>");
                 str.Append("<td> <a href='EditProduct.aspx?id=" + item.ID + "' class='btn btn-info btn-fill mrg-r-10'> <i class='fa fa-pencil'></i> Edit </a>  " +
                                " <a href='javascript:void(0);' class='btn btn-danger btn-fill' onclick='btnDelete(" + item.ID + ")'> <i class='fa fa-trash'></i> Delete</a>" +

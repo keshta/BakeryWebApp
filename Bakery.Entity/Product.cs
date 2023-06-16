@@ -21,5 +21,6 @@ namespace Bakery.Entity
         public string DescriptionAr { get; set; }
         public string DescriptionEn { get; set; }
         public string Image { get; set; }
+        public Nullable<System.DateTime> DateCreated { get; set; }
     }
 }

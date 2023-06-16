@@ -53,7 +53,7 @@ namespace Bakery.DAL
             }
             return obj;
         }
-
+        
         /// <summary>
         /// Execute the Select Query and returns a List of Blog.
         /// </summary>
@@ -63,6 +63,49 @@ namespace Bakery.DAL
             try
             {
                 var sqlCommand = new SqlCommand("SELECT * FROM Blog", con);
+                SqlDataReader dataReader;
+                con.Open();
+                dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    var obj = new Blog();
+                    for (int inc = 0; inc < dataReader.FieldCount; inc++)
+                    {
+                        if (!string.IsNullOrWhiteSpace(dataReader.GetValue(inc).ToString()))
+                        {
+                            Type type = obj.GetType();
+                            var prop = type.GetProperty(dataReader.GetName(inc));
+                            prop.SetValue(obj, dataReader.GetValue(inc), null);
+                        }
+                    }
+
+                    list.Add(obj);
+                }
+                dataReader.Close();
+                sqlCommand.Dispose();
+            }
+            catch (Exception ex)
+            {
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Execute the Select Query and returns a List of Blog.
+        /// </summary>
+        public List<Blog> SelectLatest()
+        {
+            List<Blog> list = new List<Blog>();
+            try
+            {
+                var sqlCommand = new SqlCommand(" SELECT top 3 * FROM Blog order by DateCreated desc ", con);
                 SqlDataReader dataReader;
                 con.Open();
                 dataReader = sqlCommand.ExecuteReader();

@@ -86,4 +86,11 @@ $(".onlyNumber").keydown(function (event) {
 });
 
 
+function openBlogUrl(id) {
+	window.location.href = "BlogDetails.aspx?id=" + id;
+}
+
+function openProductUrl(id) {
+	window.location.href = "ProductDetails.aspx?id=" + id;
+}
 

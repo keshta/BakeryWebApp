@@ -30,7 +30,7 @@
                     <div class="contact_info_item">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <h4>Location</h4>
-                        <div class="address">Cairo, Egypt</div>
+                        <div class="address" id="lblAddress" runat="server">Cairo, Egypt</div>
                     </div>
                 </div>
 
@@ -39,7 +39,7 @@
                         <i class="fa fa-phone" aria-hidden="true"></i>
                         <h4>Contact Number</h4>
                         <div>
-                            <h5><a href="tel:00966-559881964,00966-508050181">0020-1272095500, 0020-1026201692</a></h5>
+                            <h5><a href="" id="lnkContactNo" runat="server"> </a></h5>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         <i class="fa fa-envelope" aria-hidden="true"></i>
                         <h4> Mail Address</h4>
                         <div>
-                            <h5><a href="mailto:info@alocarshowroom.com">info@example.com</a></h5>
+                            <h5><a href="" id="lnkEmail" runat="server"> </a></h5>
                         </div>
                     </div>
                 </div>

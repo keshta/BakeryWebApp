@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card blog-img shadow-sm">
-                            <img src="Content/assets/img/blog/02.jpg" class="prod-img" />
+                            <img src="" id="imgBlog" runat="server" class="prod-img" />
                         </div>
                     </div>
                 </div>
@@ -40,18 +40,11 @@
                 <div class="card blog-desc">
                     <div class="card-body">
                         <p class="btn btn-rosy">
-                            <i class="fa fa-calendar" aria-hidden="true"></i>  22 November, 2022
+                            <i class="fa fa-calendar" aria-hidden="true"></i>  
+                            <span id="lblDate" runat="server"></span>
                         </p>
-                        <h4>Where Can I Get Some? </h4>
-                        <p class="card-text">
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                            The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
-                            content here', making it look like readable English
-
-                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text,
-                            and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have
-                            evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
+                        <h4 id="lblTitle" runat="server"> </h4>
+                        <p class="card-text" id="lblDescription" runat="server"> </p>
                     </div>
                 </div>
 

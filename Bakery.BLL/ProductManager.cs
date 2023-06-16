@@ -40,6 +40,20 @@ namespace Bakery.BLL
             }
         }
 
+     /// <summary>
+        /// Returns a list of Product.
+        /// </summary>
+        public List<Product> GetLatestList()
+        {
+            try
+            {
+                return new ProductData().SelectLatest();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         /// <summary>
         /// Returns a list of Product.
         /// </summary>

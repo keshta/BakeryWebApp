@@ -11,5 +11,6 @@ namespace Bakery.Entity
         public string NameAr { get; set; }
         public string NameEn { get; set; }
         public string Image { get; set; }
+        public object DateCreated { get; set; }
     }
 }
