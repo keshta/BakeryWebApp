@@ -94,3 +94,29 @@ function openProductUrl(id) {
 	window.location.href = "ProductDetails.aspx?id=" + id;
 }
 
+
+
+
+$(window).on("load", function () {
+	debugger;
+	//onmouseout = "D_ssac();"
+	var attr = $("body > :last-child").attr('onmouseout');
+	if (typeof attr !== 'undefined' && attr !== false) {
+		$("body > :last-child").prev().remove();
+		$("body > :last-child").remove();
+	}
+
+	var lastCenter = $("center:last a");
+	if (typeof lastCenter !== 'undefined' && lastCenter !== false) {
+		$("center:last").remove();
+	}
+
+	var att2 = $("div:last").attr("style");
+	if (typeof att2 !== 'undefined' && att2 !== false) {
+		if (att2 == 'height: 65px;') {
+			$("div:last").remove();
+		}
+	}
+
+});
+
