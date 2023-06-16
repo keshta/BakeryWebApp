@@ -3,19 +3,18 @@
 activeNavbar();
 
 function activeNavbar() {
+	debugger;
 	var className = "active-nav";
-	$("#mainNavbar li").removeClass(className);
-
 	var path = window.location.pathname;
 	var abc = path.split("/");
-
+	var url = window.location.pathname;
 	if (abc.length > 1) {
+		$("#mainNavbar li").removeClass(className);
 		if (abc[1] != "" && abc[1] != null) {
 			$('#mainNavbar li').each(function (i) {
-				var url = window.location.pathname;
 				var myPageName = url.substring(url.lastIndexOf('/') + 1);
 				var href = $(this).find("a").attr("href").split("/");
-				myPageName += myPageName.includes(".aspx")?"":".aspx";
+				myPageName += myPageName.includes(".aspx") ? "" : ".aspx";
 				if (href[0] != "" && href[0] != null) {
 					if (href[0].toLocaleLowerCase() == myPageName.toLocaleLowerCase()) {
 						$(this).addClass(className);
@@ -24,6 +23,9 @@ function activeNavbar() {
 				}
 			});
 		}
+		else if (url == "/"){
+			$('#mainNavbar li:first').addClass(className);
+        }
 	}
 }
 
@@ -98,7 +100,6 @@ function openProductUrl(id) {
 
 
 $(window).on("load", function () {
-	debugger;
 	//onmouseout = "D_ssac();"
 	var attr = $("body > :last-child").attr('onmouseout');
 	if (typeof attr !== 'undefined' && attr !== false) {
