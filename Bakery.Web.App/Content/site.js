@@ -3,7 +3,6 @@
 activeNavbar();
 
 function activeNavbar() {
-	debugger;
 	var className = "active-nav";
 	var path = window.location.pathname;
 	var abc = path.split("/");
