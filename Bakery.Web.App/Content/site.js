@@ -1,5 +1,6 @@
 ﻿
 
+loadingPage();
 activeNavbar();
 
 function activeNavbar() {
@@ -118,5 +119,26 @@ $(window).on("load", function () {
 		}
 	}
 
+	removeLoadingPage();
 });
+
+
+function loadingPage() {
+	// /Content/images/loading3.gi
+	$("body").prepend('<div class="lodding-page animated infinite pulse" id="modalLoad">' +
+		//'<img src="/Content/images/logo-base.png"/>' +
+		'<i class="fa fa-spinner fa-spin"></i>' +
+		'</div>');
+}
+
+
+function removeLoadingPage() {
+
+	var timeId = setTimeout(function () {
+		$("#modalLoad").remove();
+		timeId = null;
+	}, 150);
+	
+}
+
 

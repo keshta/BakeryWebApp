@@ -1269,3 +1269,34 @@ body {
 .dir-rtl {
     direction: rtl !important;
 }
+
+
+.lodding-page {
+    text-align: center;
+    position: fixed; /* Stay in place */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Fallback color */
+    z-index: 30000;
+}
+
+    .lodding-page i {
+        margin-top: 250px;
+        font-size: 100px;
+        color: #D20B55;
+    }
+
+    .lodding-page img {
+        margin: auto;
+        text-align: center;
+        display: inline-block;
+        position: absolute;
+        left: 40%;
+        top: 35%;
+        width: 20%;
+        object-fit: contain;
+    }
