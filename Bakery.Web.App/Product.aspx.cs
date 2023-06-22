@@ -15,17 +15,24 @@ namespace Bakery.Web.App
         ProductManager _productManager = new ProductManager();
         static CategoryManager _categoryManager = new CategoryManager();
         static BrandManager _brandManager = new BrandManager();
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            LiteralBody.Text = GetData();
+            string search = !string.IsNullOrWhiteSpace(Request.QueryString["search"])? Request.QueryString["search"] : "";
+            LiteralBody.Text = GetData(search);
         }
 
-        string GetData()
+        string GetData(string search="")
         {
             var brands = _brandManager.GetList();
             var categories = _categoryManager.GetList();
-            var list = _productManager.GetList();
+            var list = new List<Entity.Product>();
+
+            if(!string.IsNullOrWhiteSpace(search))
+                list = _productManager.GetList(search);
+            else
+                list = _productManager.GetList();
+
             var str = new StringBuilder();
             foreach (var item in list)
             {

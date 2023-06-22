@@ -97,7 +97,52 @@ namespace Bakery.DAL
             return list;
         }
 
-     /// <summary>
+        /// <summary>
+        /// Execute the Select Query and returns a List of Product By Name.
+        /// </summary>
+        public List<Product> Select(string search)
+        {
+            List<Product> list = new List<Product>();
+            try
+            {
+                var sqlCommand = new SqlCommand("SELECT * FROM Product WHERE LOWER(LTRIM(RTRIM(NameEn))) like '%'+@Search+'%' ", con);
+                sqlCommand.Parameters.Add(new SqlParameter("@Search", (search??"").ToLower().Trim()));
+                SqlDataReader dataReader;
+                con.Open();
+
+                dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    var obj = new Product();
+                    for (int inc = 0; inc < dataReader.FieldCount; inc++)
+                    {
+                        if (!string.IsNullOrWhiteSpace(dataReader.GetValue(inc).ToString()))
+                        {
+                            Type type = obj.GetType();
+                            var prop = type.GetProperty(dataReader.GetName(inc));
+                            prop.SetValue(obj, dataReader.GetValue(inc), null);
+                        }
+                    }
+
+                    list.Add(obj);
+                }
+                dataReader.Close();
+                sqlCommand.Dispose();
+            }
+            catch (Exception ex)
+            {
+                // throw;
+            }
+            finally
+            {
+                if (con.State != ConnectionState.Closed)
+                    con.Close();
+            }
+            return list;
+        }
+
+        /// <summary>
         /// Execute the Select Query and returns a List of Product.
         /// </summary>
         public List<Product> SelectLatest()

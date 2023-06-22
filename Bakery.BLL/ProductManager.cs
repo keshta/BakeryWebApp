@@ -40,6 +40,22 @@ namespace Bakery.BLL
             }
         }
 
+
+        /// <summary>
+        /// Returns a list of Product.
+        /// </summary>
+        public List<Product> GetList(string search)
+        {
+            try
+            {
+                return new ProductData().Select(search);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
      /// <summary>
         /// Returns a list of Product.
         /// </summary>

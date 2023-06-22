@@ -176,7 +176,7 @@
 }
 
     .openBtn:hover {
-        background: transparent;
+        background: transparent !important;
     }
 
 
@@ -238,7 +238,7 @@
         background: #f1f1f1;
     }
 
-.overlaySearch button {
+.overlaySearch .btn-search {
     float: left;
     width: 20%;
     padding: 15px;
@@ -249,7 +249,7 @@
     cursor: pointer;
 }
 
-    .overlaySearch button:hover {
+    .overlaySearch .btn-search:hover {
         background: #e33e7c;
     }
 

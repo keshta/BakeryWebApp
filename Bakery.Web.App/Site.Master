@@ -43,15 +43,17 @@
 
 </head>
 <body>
-
-    <div id="myOverlay" class="overlaySearch">
-        <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-        <div class="overlay-content">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="button"><i class="fa fa-search"></i></button>
-        </div>
-    </div>
     <form runat="server">
+        <div id="myOverlay" class="overlaySearch">
+            <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+            <div class="overlay-content">
+                <input type="text" placeholder="Search By Product" id="txtSearch" runat="server">
+                <asp:LinkButton ID="lnkSearch" runat="server" OnClick="lnkSearch_Click" CssClass="btn-search">
+                <i class="fa fa-search"></i>
+                </asp:LinkButton>
+            </div>
+        </div>
+
         <header>
             <nav class="fixed-top main-header">
                 <div class="container">
@@ -219,7 +221,7 @@
                                         <!-- End contact Icon -->
                                         <div class="contact-info">
                                             <h3 id="lblFooterPhone" runat="server">95 711 9 5353</h3>
-                                            <p> &nbsp; Give us a call</p>
+                                            <p>&nbsp; Give us a call</p>
                                         </div>
                                         <!-- End Contact Info -->
                                     </div>

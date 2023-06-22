@@ -50,5 +50,13 @@ namespace Bakery.Web.App
                 Response.Redirect("Home.aspx");
             }
         }
+
+        protected void lnkSearch_Click(object sender, EventArgs e)
+        {
+            if(!string.IsNullOrWhiteSpace(txtSearch.Value))
+                Response.Redirect($"Product.aspx?search={txtSearch.Value}");
+            else
+                Response.Redirect($"Product.aspx");
+        }
     }
 }
