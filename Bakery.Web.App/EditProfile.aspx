@@ -51,7 +51,7 @@
 
                 <div class="form-label-group mt-2 mb-3">
                     <label for="txtPassword">Password</label>
-                    <asp:RequiredFieldValidator ID="RequiredPassword" runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ValidationGroup="userGroup" ErrorMessage="Password Is Required"></asp:RequiredFieldValidator>
+                    <%--<asp:RequiredFieldValidator ID="RequiredPassword" runat="server" ControlToValidate="txtPassword" CssClass="text-danger" ValidationGroup="userGroup" ErrorMessage="Password Is Required"></asp:RequiredFieldValidator>--%>
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" ToolTip="Password"></asp:TextBox>
                 </div>
 

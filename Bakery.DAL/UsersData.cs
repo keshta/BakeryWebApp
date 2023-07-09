@@ -154,7 +154,7 @@ namespace Bakery.DAL
 
                 string sql = "SELECT COUNT(*) FROM Users ";
                 if (id > 0)
-                    sql += $" WHERE (Mobile = '{mobile}' and ID={id}) or (Mobile='{mobile}' and ID <> {id})";
+                    sql += $" WHERE (Mobile='{mobile}' and ID <> {id})";
 
                 else
                     sql += $"WHERE lower(Mobile) = '{mobile}'";

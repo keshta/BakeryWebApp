@@ -21,6 +21,7 @@ namespace Bakery.Web.App
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            lblError.Text = "";
             string username = (txtUsername.Text ?? "").Trim();
             string password = txtPassword.Text;
 
@@ -32,6 +33,8 @@ namespace Bakery.Web.App
                     AppCookies.AddCookie(user,chkRemember.Checked);
                     Response.Redirect("Home.aspx");
                 }
+                else
+                    lblError.Text = "Please check your username and password";
             }
             
         }

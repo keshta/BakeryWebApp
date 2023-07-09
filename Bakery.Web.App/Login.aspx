@@ -24,6 +24,7 @@
                 <div class="text-center mb-2">
                     <p class="color-rosy"> <i class="fa fa-user-circle-o" aria-hidden="true" style="font-size: 80px;"></i> </p>
                     <h1 class="h3 mb-3 font-weight-normal">User Login</h1>
+                    <asp:Label ID="lblError" runat="server" CssClass="text-danger" Text=""></asp:Label>
                 </div>
 
                 <div class="form-label-group">

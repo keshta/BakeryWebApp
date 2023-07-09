@@ -17,11 +17,12 @@ namespace Bakery.Web.App
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            
             if (!IsPostBack)
             {
                 txtFullName.Text = AppCookies.User.FullName;
                 txtEmail.Text = AppCookies.User.Email;
-                txtMobile.Text = AppCookies.User.Mobile;
+                txtMobile.Text = AppCookies.User.Mobile??string.Empty;
                 txtPassword.Text = AppCookies.User.Password;
 
                 if (AppCookies.IsAdmin)
@@ -39,7 +40,7 @@ namespace Bakery.Web.App
 
         protected void lnkSave_Click(object sender, EventArgs e)
         {
-            bool chkMobile = _usersManager.MobileIsExist(txtMobile.Text.Trim());
+            bool chkMobile = _usersManager.MobileIsExist(txtMobile.Text.Trim(), AppCookies.User.ID);
             lblError.Text = "";
             if (chkMobile)
                 lblError.Text += $"Mobile Already Exists {Environment.NewLine}";
@@ -51,7 +52,7 @@ namespace Bakery.Web.App
                 {
                     ID = AppCookies.User.ID,
                     Username = AppCookies.User.Username,
-                    Password = txtPassword.Text,
+                    Password = txtPassword.Text?? AppCookies.User.Password,
                     FullName = txtFullName.Text.Trim(),
                     Email = (txtEmail.Text??"").Trim(),
                     Mobile = (txtMobile.Text??"").Trim(),
